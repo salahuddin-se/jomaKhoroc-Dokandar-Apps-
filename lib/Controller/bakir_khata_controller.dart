@@ -35,13 +35,17 @@ class BakirKhataController extends GetxController {
       String month = formattedDate.substring(0, 3);
       String year = formattedDate.substring(7, 11);
 
-      pList.add(Saless(
+      pList.add
+        (Saless
+        (
           qSnap.docs[i]['Account'],
           qSnap.docs[i]['Amount'],
           day + '/' + month + '/' + year,
           qSnap.docs[i]['Product'],
           qSnap.docs[i]['Seller'],
-          qSnap.docs[i]['Type']));
+          qSnap.docs[i]['Type']
+      )
+      );
     }
 
     sList = pList;

@@ -72,10 +72,13 @@ class _BakiRakhunState extends State<BakiRakhun> {
                           ],
                         ),
                       ),
+
                       SizedBox(
                           height: 45.0,
                           child: VerticalDivider(
-                              color: Colors.grey, thickness: 1.2)),
+                              color: Colors.grey, thickness: 1.2)
+                      ),
+
                       Expanded(
                         flex: 1,
                         child: Column(
@@ -86,6 +89,7 @@ class _BakiRakhunState extends State<BakiRakhun> {
                           ],
                         ),
                       )
+
                     ],
                   ),
                 ),

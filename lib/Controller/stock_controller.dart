@@ -42,7 +42,9 @@ class StockController extends GetxController {
                 double.parse(qSnap.docs[i]['BuyPrice']))
             .toString();
       }
-      pList.add(Product(
+      pList.add(
+          Product
+            (
           qSnap.docs[i]['Product'],
           qSnap.docs[i]['imageUrl'],
           qSnap.docs[i]['BuyPrice'],
@@ -53,7 +55,9 @@ class StockController extends GetxController {
           qSnap.docs[i]['Online-Store'],
           qSnap.docs[i]['Stock'],
           qSnap.docs[i]['Seller'],
-          qSnap.docs[i].id));
+          qSnap.docs[i].id
+          )
+      );
     }
 
     for (var elem in cat) {

@@ -23,7 +23,8 @@ class _CalculatorState extends State<Calculator> {
           calculatorController.btnClear1();
       },
       child: Text(text),
-      style: ElevatedButton.styleFrom(
+      style:
+      ElevatedButton.styleFrom(
         primary: Colors.white,
         onPrimary: (text == '+') ? Colors.green : Colors.black,
         textStyle: TextStyle(fontSize: 30.0),
@@ -84,6 +85,7 @@ class _CalculatorState extends State<Calculator> {
                         ),
                       );
                     },
+
                     child: Obx(() => (calculatorController.prodName.value == '')
                         ? Text('পণ্যের নাম লিখুন',
                             style: TextStyle(color: Colors.grey[400]))
@@ -91,6 +93,7 @@ class _CalculatorState extends State<Calculator> {
                             style: TextStyle(color: Colors.grey[400]))),
                   ),
                 ),
+
                 Expanded(
                     flex: 4,
                     child: Align(
@@ -100,17 +103,22 @@ class _CalculatorState extends State<Calculator> {
                             '৳' + calculatorController.totalTk.value.toString(),
                             style: TextStyle(fontSize: 26.0)),
                       ),
-                    )),
+                    )
+                ),
+
                 Expanded(
                     flex: 1,
                     child: IconButton(
                         onPressed: () {
                           calculatorController.btnClear();
                         },
-                        icon: Icon(Icons.clear))),
+                        icon: Icon(Icons.clear))
+                ),
+
               ],
             ),
           ),
+
           Table(
             children: [
               TableRow(children: [
@@ -132,9 +140,11 @@ class _CalculatorState extends State<Calculator> {
                 buildButton('.'),
                 buildButton('0'),
                 buildButton('+'),
-              ]),
+              ]
+              ),
             ],
           ),
+
         ],
       ),
     );

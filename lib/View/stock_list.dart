@@ -21,7 +21,7 @@ class _StockListState extends State<StockList> {
       floatingActionButton: FloatingActionButton.extended(
         label: Text('নতুন পণ্য'),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal[600],
         foregroundColor: Colors.white,
         onPressed: () {
           Get.to(AddProducts('Stock'));

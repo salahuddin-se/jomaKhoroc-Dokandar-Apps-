@@ -19,6 +19,7 @@ class AddContact extends StatefulWidget {
 }
 
 class _AddContactState extends State<AddContact> {
+
   TextEditingController phoneController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -124,7 +125,8 @@ class _AddContactState extends State<AddContact> {
         labelText: label,
         labelStyle: TextStyle(fontSize: 16.0),
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0)),
+            borderSide: BorderSide(color: Colors.green, width: 2.0)
+        ),
       ),
     );
   }

@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: ConvexAppBar(
-          backgroundColor: Colors.green,
+          backgroundColor: Colors.teal[600],
           color: Colors.white,
           activeColor: Colors.green[100],
           items: [

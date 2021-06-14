@@ -40,11 +40,13 @@ class ReportController extends GetxController {
   }
 
   void prodData(DateTime date1, DateTime date2) async {
+
     isLoad1.value = true;
 
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String sellerPhone = sharedPreferences.getString('Phone').toString();
 
+    //fireBase
     FirebaseFirestore instance = FirebaseFirestore.instance;
     var qSnap = await instance
         .collection('Sales')

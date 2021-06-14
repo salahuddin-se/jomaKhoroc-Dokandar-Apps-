@@ -35,7 +35,9 @@ class BakiController extends GetxController {
         totalBaki.value = (double.parse(totalBaki.value) +
                 double.parse(qSnap.docs[i]['Amount'].toString()))
             .toString();
-      } else {
+      }
+
+      else {
         totalJoma.value = (double.parse(totalJoma.value) +
                 double.parse(qSnap.docs[i]['Amount'].toString()))
             .toString();
@@ -60,9 +62,7 @@ class BakiController extends GetxController {
     //             double.parse(qSnap.docs[i]['Amount']))
     //         .toString();
     //   }
-
     //   phonenoList.add(qSnap.docs[i]['Account'].toString());
-
     //   pList.add(Baki(
     //     qSnap.docs[i]['Account'],
     //     qSnap.docs[i]['Seller'],

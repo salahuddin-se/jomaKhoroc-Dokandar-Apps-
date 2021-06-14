@@ -12,16 +12,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class ContactList extends StatefulWidget {
   final bool bakiache, details;
   const ContactList(this.bakiache, this.details);
-
   @override
   _ContactListState createState() => _ContactListState();
 }
 
 class _ContactListState extends State<ContactList> {
-  final ContactListController contactListController =
-      Get.put(ContactListController());
-  final CalculatorController calculatorController =
-      Get.put(CalculatorController());
+  final ContactListController contactListController = Get.put(ContactListController());
+  final CalculatorController calculatorController = Get.put(CalculatorController());
 
   tileTap(String phone, Contact contact) async {
     print(widget.bakiache.toString() + ' = ' + widget.details.toString());
@@ -57,9 +54,9 @@ class _ContactListState extends State<ContactList> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        label: Text('নতুন কন্টাক্ট'),
+        label: Text('নতুন কন্টাক্ট',style: TextStyle(fontSize: 17,fontWeight: FontWeight.bold),),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
         onPressed: () {
           if (widget.bakiache == true) {
@@ -69,6 +66,7 @@ class _ContactListState extends State<ContactList> {
           }
         },
       ),
+
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
@@ -76,19 +74,22 @@ class _ContactListState extends State<ContactList> {
         title: Text('কন্টাক্ট লিস্ট', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
+
       body: Container(
         //color: Colors.grey[400],
         height: MediaQuery.of(context).size.height,
         child: Obx(() {
+
           if (contactListController.isLoad.value == true) {
             return Center(
               child: CircularProgressIndicator(
                 color: Colors.green,
               ),
             );
-          } else {
+          }
+          else {
             return ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              //physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: contactListController.contactList.length,
               itemBuilder: (BuildContext context, int index) {
@@ -103,8 +104,12 @@ class _ContactListState extends State<ContactList> {
                     },
                     tileColor: Colors.white,
                     leading: Container(
-                      height: 60,
-                      width: 60,
+                      // height: 60,
+                      // width: 60,
+
+                      height: 50,
+                      width: 50,
+
                       child: (contactListController.contactList[index].imageUrl
                                   .toString() ==
                               'null')
@@ -120,18 +125,25 @@ class _ContactListState extends State<ContactList> {
                     trailing: Icon(Icons.arrow_forward, color: Colors.green),
                     title: Text(contactListController.contactList[index].name
                         .toString()),
-                    subtitle: Row(
+                    subtitle:
+                    Row(
                       children: [
                         Text(contactListController.contactList[index].phone
                             .toString()),
                         SizedBox(width: 5.0),
                         Container(
-                            color: Colors.yellow[800],
-                            child: Text(
-                              contactListController.contactList[index].type
-                                  .toString(),
-                              style: TextStyle(color: Colors.white),
-                            )),
+                            height: 25,
+                            width: 80,
+                            color: Colors.teal[600],
+                            child: Center(
+                              child: Text(
+                                contactListController.contactList[index].type
+                                    .toString(),
+                                style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                              ),
+                            )
+                        ),
+
                       ],
                     ),
                   ),
@@ -141,6 +153,7 @@ class _ContactListState extends State<ContactList> {
           }
         }),
       ),
+
     );
   }
 }

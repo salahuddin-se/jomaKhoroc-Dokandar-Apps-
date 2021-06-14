@@ -7,7 +7,6 @@ import 'package:jomakhoroch/View/subs.dart';
 
 class OnlineStore extends StatefulWidget {
   const OnlineStore({Key? key}) : super(key: key);
-
   @override
   _OnlineStoreState createState() => _OnlineStoreState();
 }
@@ -160,8 +159,7 @@ class _OnlineStoreState extends State<OnlineStore> {
                       children: [
                         Align(
                             alignment: Alignment.topLeft,
-                            child: Text('অনলাইন স্টোরের হিসাব',
-                                style: TextStyle(fontSize: 14.0))),
+                            child: Text('অনলাইন স্টোরের হিসাব',style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
                         Row(
                           children: [
                             Expanded(
@@ -185,7 +183,8 @@ class _OnlineStoreState extends State<OnlineStore> {
                         Align(
                             alignment: Alignment.topLeft,
                             child: Text('বর্তমান অর্ডার',
-                                style: TextStyle(fontSize: 14.0))),
+                                style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
+
                         Row(
                           children: [
                             Expanded(
@@ -199,6 +198,7 @@ class _OnlineStoreState extends State<OnlineStore> {
                             )
                           ],
                         ),
+
                       ],
                     ),
                   ),
@@ -216,7 +216,7 @@ class _OnlineStoreState extends State<OnlineStore> {
                           Align(
                               alignment: Alignment.topLeft,
                               child: Text('পণ্যের হিসাব',
-                                  style: TextStyle(fontSize: 14.0))),
+                                  style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
                           Row(
                             children: [
                               Expanded(
@@ -238,10 +238,13 @@ class _OnlineStoreState extends State<OnlineStore> {
                 ),
                 SizedBox(height: 10.0),
                 buildButton(addBtn, 'নতুন পণ্য যোগ করুন', Icons.add_box,
-                    Icons.add_circle_outline),
+                    Icons.add_circle_outline
+                ),
                 SizedBox(height: 10.0),
                 buildButton(addBtn, 'অনলাইন স্টোরে সম্পর্কিত তথ্য',
-                    Icons.question_answer, Icons.arrow_forward),
+                    Icons.question_answer, Icons.arrow_forward
+                ),
+
               ],
             ),
           ),

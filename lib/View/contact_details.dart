@@ -10,7 +10,6 @@ import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 class ContactDetails extends StatefulWidget {
   final Contact contact;
   const ContactDetails(this.contact);
-
   @override
   _ContactDetailsState createState() => _ContactDetailsState();
 }
@@ -27,6 +26,7 @@ class _ContactDetailsState extends State<ContactDetails> {
   void sentMail() async {
     await UrlLauncher.launch('mailto:+${widget.contact.email}');
   }
+
 
   Widget partOne() {
     return Container(
@@ -240,7 +240,8 @@ class _ContactDetailsState extends State<ContactDetails> {
               onPressed: () {
                 Get.to(EditContact(widget.contact));
               },
-              icon: Icon(Icons.edit, color: Colors.green)),
+              icon: Icon(Icons.edit, color: Colors.green)
+          ),
           PopupMenuButton(
               offset: Offset(0, 40),
               onSelected: (value) {
@@ -260,7 +261,8 @@ class _ContactDetailsState extends State<ContactDetails> {
                     ),
                   )
                 ];
-              })
+              }
+              )
         ],
       ),
       body: SingleChildScrollView(

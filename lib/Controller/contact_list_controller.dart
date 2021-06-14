@@ -34,7 +34,8 @@ class ContactListController extends GetxController {
         qSnap.docs[i]['imageUrl'],
         qSnap.docs[i]['Seller'],
         qSnap.docs[i].id,
-      ));
+      )
+      );
     }
     contactList = pList;
     isLoad.value = false;

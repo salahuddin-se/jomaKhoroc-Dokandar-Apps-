@@ -47,7 +47,8 @@ class CalculatorController extends GetxController {
         totalTk.value = totalTk.value
             .toString()
             .substring(0, totalTk.value.toString().length - 1);
-      } else {
+      }
+      else {
         totalSum.value =
             (double.parse(totalSum.value) - double.parse(totalTk.value))
                 .toString();
@@ -64,6 +65,7 @@ class CalculatorController extends GetxController {
             (double.parse(totalSum.value) + double.parse(totalTk.value))
                 .toString();
       }
+
     }
   }
 }

@@ -15,9 +15,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Joma khoroch',
-      theme: ThemeData(
+      theme:
+
+      ThemeData(
         primarySwatch: Colors.blue,
       ),
+
       home: SpalshScreen(),
     );
   }

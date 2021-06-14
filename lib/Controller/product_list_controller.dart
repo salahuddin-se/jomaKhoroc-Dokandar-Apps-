@@ -17,7 +17,9 @@ class ProductListController extends GetxController {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String sellerPhone = sharedPreferences.getString('Phone').toString();
 
+    //fireBase
     FirebaseFirestore instance = FirebaseFirestore.instance;
+
     var qSnap = await instance
         .collection('Products')
         .where('Seller', isEqualTo: sellerPhone)
@@ -36,7 +38,8 @@ class ProductListController extends GetxController {
           qSnap.docs[i]['Online-Store'],
           qSnap.docs[i]['Stock'],
           qSnap.docs[i]['Seller'],
-          qSnap.docs[i].id));
+          qSnap.docs[i].id)
+      );
     }
     productList = pList;
     isLoad.value = false;

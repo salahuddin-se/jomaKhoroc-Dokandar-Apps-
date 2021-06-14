@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +86,8 @@ class _AddProductsState extends State<AddProducts> {
           } else {
             Get.off(BechaBikri());
           }
-        });
+        }
+        );
       }).onError((error, stackTrace) {
         Get.snackbar('Error', error.toString());
       });
@@ -172,7 +172,8 @@ class _AddProductsState extends State<AddProducts> {
             children: [
               Align(
                   alignment: Alignment.topLeft,
-                  child: Text('পণ্যের ছবি যোগ করুন')),
+                  child: Text('পণ্যের ছবি যোগ করুন')
+              ),
               Align(
                 alignment: Alignment.topLeft,
                 child: Row(
@@ -227,7 +228,7 @@ class _AddProductsState extends State<AddProducts> {
                   Expanded(
                       flex: 1,
                       child:
-                          buildTextFeild(discountController, 'চারের পরিমান')),
+                          buildTextFeild(discountController, 'চাড়ের পরিমান')),
                 ],
               ),
               buildTextFeild(stockController, 'স্টকের সংখ্যা'),

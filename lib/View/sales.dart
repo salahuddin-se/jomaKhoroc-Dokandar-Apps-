@@ -35,7 +35,7 @@ class _SalesState extends State<Sales> {
                         (widget.list[index].type == 'Cash')
                             ? Text('৳${widget.list[index].amount}')
                             : Text('বাকি ৳${widget.list[index].amount}',
-                                style: TextStyle(color: Colors.red[800])),
+                                style: TextStyle(color: Colors.red[800],fontWeight: FontWeight.bold)),
                         Text(widget.list[index].date),
                       ],
                     ),

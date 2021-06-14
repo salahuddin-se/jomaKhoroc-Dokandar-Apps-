@@ -13,7 +13,7 @@ class _MarketingState extends State<Marketing> {
     return SafeArea(
       child: Scaffold(
         body: Center(
-          child: Text('মার্কেটিং এর জন্য কল করুন ০১৮২০০৬৬৬৬২',
+          child: Text('মার্কেটিং এর জন্য কল করুন 01611306400',
               style: TextStyle(fontSize: 25.0)),
         ),
       ),

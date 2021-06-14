@@ -7,7 +7,6 @@ import 'package:jomakhoroch/View/sales.dart';
 
 class BikrirKhata extends StatefulWidget {
   const BikrirKhata({Key? key}) : super(key: key);
-
   @override
   _BikrirKhataState createState() => _BikrirKhataState();
 }

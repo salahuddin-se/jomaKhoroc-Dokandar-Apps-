@@ -20,7 +20,9 @@ class _CatagoryListState extends State<CatagoryList> {
             Align(
                 alignment: Alignment.topLeft,
                 child: Text('মোট ${widget.cList.length}',
-                    style: TextStyle(color: Colors.grey))),
+                    style: TextStyle(color: Colors.grey))
+            ),
+
             ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
@@ -36,6 +38,7 @@ class _CatagoryListState extends State<CatagoryList> {
                 ],
               ),
             ),
+
           ],
         ),
       ),

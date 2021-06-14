@@ -128,19 +128,22 @@ class _BechaBikriState extends State<BechaBikri> {
                       ),
                     ),
                   ];
-                }),
+                }
+                ),
           ],
         ),
+
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.teal[700],
+          //unselectedItemColor: Colors.black,
           iconSize: 30,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.calculate), label: 'কুইক সেল'),
-            BottomNavigationBarItem(icon: Icon(Icons.list), label: 'লিস্ট'),
+                icon: Icon(Icons.calculate,), label: 'কশর্ট কাট,',
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.list,color: Colors.teal[700]), label: 'লিস্ট'),
           ],
           onTap: (int index) {
             setState(() {
@@ -148,6 +151,7 @@ class _BechaBikriState extends State<BechaBikri> {
             });
           },
         ),
+
         body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,

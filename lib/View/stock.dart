@@ -39,12 +39,16 @@ class _StockState extends State<Stock> {
               ? Center(child: CircularProgressIndicator(color: Colors.green))
               : TabBarView(
                   children: [
+
                     StockList(
                         stockController.productList,
                         stockController.totalP.value,
                         stockController.cntB.value,
-                        stockController.totalB.value),
+                        stockController.totalB.value
+                    ),
+
                     CatagoryList(stockController.catList),
+
                   ],
                 ),
         ),

@@ -25,7 +25,7 @@ class _RegisterState extends State<Register> {
     String phoneNo = '+88' + phoneController.text.trim();
     await auth.verifyPhoneNumber(
       phoneNumber: phoneNo,
-      timeout: const Duration(seconds: 60),
+      timeout: const Duration(seconds: 120),
       verificationCompleted: (PhoneAuthCredential credential) async {
         Get.dialog(
             Container(

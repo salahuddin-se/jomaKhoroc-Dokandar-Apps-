@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/Controller/my_profile_controller.dart';
 import 'package:jomakhoroch/View/bakir_khata.dart';
 import 'package:jomakhoroch/View/becha_bikri.dart';
 import 'package:jomakhoroch/View/bikrir_khata.dart';
@@ -16,14 +15,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
-
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
   String name = 'Name';
-
   void fetchData() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String sellerPhone = sharedPreferences.getString('Phone').toString();
@@ -49,19 +46,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: ListTile(
-            leading: Container(
-                color: Colors.grey[200],
-                child: Image.asset('images/profile.png')),
-            title: Text(name,
-                style: TextStyle(
-                    color: Colors.white, fontWeight: FontWeight.bold)),
-            subtitle:
-                Text('বেসিক প্যাকেজ', style: TextStyle(color: Colors.white)),
+
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            backgroundColor: Colors.teal[600],
+            title: Text("জমা খরচ.কম",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            centerTitle: true,
           ),
-          backgroundColor: Colors.green,
         ),
+
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10.0),
@@ -79,148 +73,229 @@ class _HomeState extends State<Home> {
                   mainAxisSpacing: 10,
                   crossAxisCount: 2,
                   children: <Widget>[
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(BechaBikri());
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 7),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                      height: 80,
-                                      width: 50,
-                                      child:
-                                          Image.asset("images/calculator.png")),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "বেচা-বিক্রি",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(BakirKhata());
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 7),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                      height: 80,
-                                      width: 50,
-                                      child:
-                                          Image.asset("images/bakirkhata.jpg")),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "বাকীর খাতা",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(DigitalPayment());
-                        },
-                        child: Container(
-                          color: Colors.white,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              //SizedBox(height: 5,),
-                              Padding(
-                                padding: const EdgeInsets.only(top: 0),
-                                child: Align(
-                                  alignment: Alignment.center,
-                                  child: Container(
-                                      height: 60,
-                                      width: 70,
-                                      child:
-                                          Image.asset("images/collection.png")),
-                                ),
-                              ),
 
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      "ডিজিটাল কালেকশন",
-                                      style: TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.black),
-                                    )),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(OnlineStore());
-                        },
-                        child: Container(
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+
+                            ),
+
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(BechaBikri());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              //SizedBox(height: 15,),
+                              SizedBox(
+                                height: 15,
+                              ),
                               Padding(
-                                padding: const EdgeInsets.only(top: 0),
+                                padding: const EdgeInsets.only(top: 7),
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Container(
                                       height: 90,
                                       width: 60,
                                       child:
-                                          Image.asset("images/onlineshop.png")),
+                                      CircleAvatar(child: Image.asset("images/calculator.png"))),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "ক্রয়-বিক্রয়",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    )),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(BakirKhata());
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 7),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      height: 90,
+                                      width: 60,
+                                      child:
+                                      CircleAvatar(child: Image.asset("images/bakirkhata.jpg"))),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "ট্যালী খাতা",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    )),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(DigitalPayment());
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 7),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      height: 90,
+                                      width: 60,
+                                      child:
+                                      CircleAvatar(child: Image.asset("images/collection.png"))),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      "ডিজিটাল লেনদেন",
+                                      style: TextStyle(
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black),
+                                    )
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+
+
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),//color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(OnlineStore());
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 7),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Container(
+                                      height: 90,
+                                      width: 60,
+                                      child:
+                                      CircleAvatar(child: Image.asset("images/onlineshop.png"))),
                                 ),
                               ),
 
@@ -241,13 +316,33 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(DashBoard());
-                        },
-                        child: Container(
+
+
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Container(
+                        //color: Colors.white,
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(DashBoard());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -262,7 +357,7 @@ class _HomeState extends State<Home> {
                                       height: 90,
                                       width: 60,
                                       child:
-                                          Image.asset("images/dashboard.png")),
+                                      CircleAvatar(child: Image.asset("images/dashboard.png"))),
                                 ),
                               ),
                               Padding(
@@ -282,6 +377,12 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
+                    //
+
+
+
+
+
                   ],
                 ),
               ),
@@ -295,7 +396,7 @@ class _HomeState extends State<Home> {
                     child: Text(
                       "আরও",
                       style: TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 17.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     )),
@@ -316,16 +417,36 @@ class _HomeState extends State<Home> {
                   mainAxisSpacing: 10,
                   crossAxisCount: 3,
                   children: <Widget>[
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(BikrirKhata());
-                        },
-                        child: Container(
+
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          child: Column(
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(BikrirKhata());
+                          },
+                          child:
+
+                          Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
                                 child: Align(
@@ -341,7 +462,7 @@ class _HomeState extends State<Home> {
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      "বিক্রির খাতা",
+                                      "বিক্রয় হিসাব",
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
@@ -350,16 +471,33 @@ class _HomeState extends State<Home> {
                               )
                             ],
                           ),
+
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(ContactList(false, true));
-                        },
-                        child: Container(
+
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(ContactList(false, true));
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -374,7 +512,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -390,13 +528,29 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(Marketing());
-                        },
-                        child: Container(
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(Marketing());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -429,13 +583,29 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(Report());
-                        },
-                        child: Container(
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),//color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(Report());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -452,6 +622,7 @@ class _HomeState extends State<Home> {
                                       child: Image.asset("images/report.png")),
                                 ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
                                 child: Align(
@@ -464,18 +635,35 @@ class _HomeState extends State<Home> {
                                           color: Colors.black),
                                     )),
                               )
+
                             ],
                           ),
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(Stock());
-                        },
-                        child: Container(
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(Stock());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -508,13 +696,29 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                     ),
-                    Card(
-                      child: InkWell(
-                        onTap: () {
-                          Get.to(DashBoard());
-                        },
-                        child: Container(
+
+                    Padding(
+                      padding: const EdgeInsets.all(2.5),
+                      child: Container(
+                        decoration: BoxDecoration(
                           color: Colors.white,
+                          borderRadius: BorderRadius.circular(25), //border corner radius
+                          boxShadow:[
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2), //color of shadow
+                              spreadRadius: 5, //spread radius
+                              blurRadius: 7, // blur radius
+                              offset: Offset(0, 2), // changes position of shadow
+                              //first paramerter of offset is left-right
+                              //second parameter is top to down
+                            ),
+                            //you can set more BoxShadow() here
+                          ],
+                        ),
+                        child: InkWell(
+                          onTap: () {
+                            Get.to(DashBoard());
+                          },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -530,7 +734,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -539,7 +743,8 @@ class _HomeState extends State<Home> {
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-                                    )),
+                                    )
+                                ),
                               )
                             ],
                           ),

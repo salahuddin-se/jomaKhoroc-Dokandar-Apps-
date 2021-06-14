@@ -12,9 +12,9 @@ class _DigitalPaymentState extends State<DigitalPayment> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        label: Text('নতুন লিংক'),
+        label: Text('নতুন লিংক',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17.0,color:Colors.white),),
         icon: Icon(Icons.add),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal[600],
         foregroundColor: Colors.white,
         onPressed: () {},
       ),
@@ -22,10 +22,10 @@ class _DigitalPaymentState extends State<DigitalPayment> {
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),
-        title: Text('ডিজিটাল কালেকশন', style: TextStyle(color: Colors.black)),
+        title: Text('ডিজিটাল লেনদেন', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
+    body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
@@ -45,14 +45,14 @@ class _DigitalPaymentState extends State<DigitalPayment> {
                         Align(
                             alignment: Alignment.topLeft,
                             child: Text(
-                              'কুইক লিংক',
+                              'ডিজিটাল লেনদেন',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             )),
                         Align(
                           alignment: Alignment.topLeft,
                           child: Text(
-                              'কাস্টমার থেকে যেকোনো পরিমান টাকা গ্রহণ করুন অনলাইনে, নিম্নের কুইক কালেকশন লিংক শেয়ার করার মাধ্যমে!'),
+                              'ডিজিটাল লেনদেনের মাধ্যমে আপনার লেন্দেন নিরাপদ করুন!'),
                         ),
                       ],
                     ),
@@ -73,9 +73,9 @@ class _DigitalPaymentState extends State<DigitalPayment> {
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: Icon(Icons.share),
-                label: Text('শেয়ার করুন'),
+                label: Text('শেয়ার করুন',style: TextStyle(fontSize:18,fontWeight: FontWeight.bold,color: Colors.white),),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  primary: Colors.teal[700],
                   onPrimary: Colors.white,
                   minimumSize:
                       Size(MediaQuery.of(context).size.width * 0.8, 40),
@@ -94,9 +94,9 @@ class _DigitalPaymentState extends State<DigitalPayment> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Icon(Icons.qr_code, color: Colors.green),
+                              Icon(Icons.qr_code, color: Colors.teal[700]),
                               Text('QR কোড',
-                                  style: TextStyle(color: Colors.green)),
+                                  style: TextStyle(color: Colors.teal[700])),
                             ],
                           ),
                         ),
@@ -113,9 +113,9 @@ class _DigitalPaymentState extends State<DigitalPayment> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Icon(Icons.copy, color: Colors.green),
+                              Icon(Icons.copy, color: Colors.teal[700]),
                               Text('কপি করুন',
-                                  style: TextStyle(color: Colors.green)),
+                                  style: TextStyle(color: Colors.teal[700])),
                             ],
                           ),
                         ),
@@ -132,9 +132,9 @@ class _DigitalPaymentState extends State<DigitalPayment> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Icon(Icons.more, color: Colors.green),
+                              Icon(Icons.more, color: Colors.teal[700]),
                               Text('বিস্তারিত',
-                                  style: TextStyle(color: Colors.green)),
+                                  style: TextStyle(color: Colors.teal[700])),
                             ],
                           ),
                         ),
@@ -147,7 +147,7 @@ class _DigitalPaymentState extends State<DigitalPayment> {
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: Icon(Icons.dashboard_customize),
-                label: Text('কাস্টম লিংকের তালিকা'),
+                label: Text('কাস্টম লিংকের তালিকা',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0,color:Colors.black),),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   onPrimary: Colors.black,
@@ -159,7 +159,7 @@ class _DigitalPaymentState extends State<DigitalPayment> {
               ElevatedButton.icon(
                 onPressed: () {},
                 icon: Icon(Icons.question_answer),
-                label: Text('ডিজিটাল কলেকশনের বিস্তারিত'),
+                label: Text('ডিজিটাল কলেকশনের বিস্তারিত',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0,color:Colors.black)),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.white,
                   onPrimary: Colors.black,
