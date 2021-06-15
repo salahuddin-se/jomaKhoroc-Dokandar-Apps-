@@ -12,20 +12,30 @@ class _InboxState extends State<Inbox> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text('নোটিফিকেশন'),
-          backgroundColor: Colors.green,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(40.0),
+          child: AppBar(
+            backgroundColor: Colors.teal[600],
+            title: Text('নোটিফিকেশন',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            centerTitle: false,
+          ),
         ),
+        //Text('নোটিফিকেশন'),
+
         body: Container(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.notification_important_rounded,
-                    size: 160.0, color: Colors.grey[300]),
-                Text('No Item To Show', style: TextStyle(fontSize: 24.0)),
+                    size: 160.0, color: Colors.grey[300]
+                ),
+                Text(
+                    'No Item To Show', style: TextStyle(fontSize: 24.0)
+                ),
                 Text('The items will be shown here',
-                    style: TextStyle(color: Colors.grey)),
+                    style: TextStyle(color: Colors.grey)
+                ),
               ],
             ),
           ),

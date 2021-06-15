@@ -22,6 +22,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   String name = 'Name';
   void fetchData() async {
+
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String sellerPhone = sharedPreferences.getString('Phone').toString();
 
@@ -34,6 +35,7 @@ class _HomeState extends State<Home> {
         name = value['Name'];
       });
     });
+
   }
 
   @override
@@ -73,8 +75,6 @@ class _HomeState extends State<Home> {
                   mainAxisSpacing: 10,
                   crossAxisCount: 2,
                   children: <Widget>[
-
-
 
                     Padding(
                       padding: const EdgeInsets.all(5.0),
@@ -186,7 +186,8 @@ class _HomeState extends State<Home> {
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-                                    )),
+                                    )
+                                ),
                               )
                             ],
                           ),
@@ -266,15 +267,14 @@ class _HomeState extends State<Home> {
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(25), //border corner radius
                           boxShadow:[
+
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.2),//color of shadow
                               spreadRadius: 5, //spread radius
                               blurRadius: 7, // blur radius
                               offset: Offset(0, 2), // changes position of shadow
-                              //first paramerter of offset is left-right
-                              //second parameter is top to down
                             ),
-                            //you can set more BoxShadow() here
+
                           ],
                         ),
                         child: InkWell(
@@ -311,6 +311,7 @@ class _HomeState extends State<Home> {
                                           color: Colors.black),
                                     )),
                               )
+
                             ],
                           ),
                         ),
@@ -380,15 +381,13 @@ class _HomeState extends State<Home> {
                     //
 
 
-
-
-
                   ],
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
+
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 8, 0),
                 child: Align(
@@ -398,9 +397,12 @@ class _HomeState extends State<Home> {
                       style: TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    )),
+                          color: Colors.black
+                      ),
+                    )
+                ),
               ),
+
               Divider(
                 height: 40,
                 thickness: 2,
@@ -417,7 +419,6 @@ class _HomeState extends State<Home> {
                   mainAxisSpacing: 10,
                   crossAxisCount: 3,
                   children: <Widget>[
-
 
 
                     Padding(
@@ -529,6 +530,8 @@ class _HomeState extends State<Home> {
                       ),
                     ),
 
+
+
                     Padding(
                       padding: const EdgeInsets.all(2.5),
                       child: Container(
@@ -541,8 +544,7 @@ class _HomeState extends State<Home> {
                               spreadRadius: 5, //spread radius
                               blurRadius: 7, // blur radius
                               offset: Offset(0, 2), // changes position of shadow
-                              //first paramerter of offset is left-right
-                              //second parameter is top to down
+
                             ),
                             //you can set more BoxShadow() here
                           ],
@@ -596,8 +598,7 @@ class _HomeState extends State<Home> {
                               spreadRadius: 5, //spread radius
                               blurRadius: 7, // blur radius
                               offset: Offset(0, 2), // changes position of shadow
-                              //first paramerter of offset is left-right
-                              //second parameter is top to down
+
                             ),
                             //you can set more BoxShadow() here
                           ],
@@ -619,7 +620,8 @@ class _HomeState extends State<Home> {
                                   child: Container(
                                       height: 35,
                                       width: 40,
-                                      child: Image.asset("images/report.png")),
+                                      child: Image.asset("images/report.png")
+                                  ),
                                 ),
                               ),
 
@@ -633,7 +635,8 @@ class _HomeState extends State<Home> {
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-                                    )),
+                                    )
+                                ),
                               )
 
                             ],
@@ -654,8 +657,8 @@ class _HomeState extends State<Home> {
                               spreadRadius: 5, //spread radius
                               blurRadius: 7, // blur radius
                               offset: Offset(0, 2), // changes position of shadow
-                              //first paramerter of offset is left-right
-                              //second parameter is top to down
+
+
                             ),
                             //you can set more BoxShadow() here
                           ],
@@ -689,7 +692,8 @@ class _HomeState extends State<Home> {
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-                                    )),
+                                    )
+                                ),
                               )
                             ],
                           ),
@@ -726,13 +730,18 @@ class _HomeState extends State<Home> {
                                 padding: const EdgeInsets.only(top: 0),
                                 child: Align(
                                   alignment: Alignment.center,
-                                  child: Container(
+                                  child:
+
+                                  Container(
                                       height: 35,
                                       width: 40,
                                       child:
-                                          Image.asset("images/hisabkhata.png")),
+                                          Image.asset("images/hisabkhata.png")
+                                  ),
+
                                 ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
                                 child: Align(
@@ -745,12 +754,17 @@ class _HomeState extends State<Home> {
                                           color: Colors.black),
                                     )
                                 ),
-                              )
+                              ),
+
+
                             ],
                           ),
                         ),
                       ),
                     ),
+
+
+
                   ],
                 ),
               ),

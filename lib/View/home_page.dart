@@ -30,11 +30,13 @@ class _HomePageState extends State<HomePage> {
             TabItem(icon: Icon(Icons.message), title: 'ইনবক্স'),
             TabItem(icon: Icon(Icons.settings), title: 'টুলস'),
           ],
+
           onTap: (int i) {
             setState(() {
               _currentIndex = i;
             });
           },
+
         ),
         body: _pages[_currentIndex],
       ),

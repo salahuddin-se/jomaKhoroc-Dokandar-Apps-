@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +60,9 @@ class _AddContactState extends State<AddContact> {
             Get.off(ContactList(false, true));
           }
         });
-      } else {
+      }
+
+      else {
         var snapshot = await FirebaseStorage.instance
             .ref()
             .child(
@@ -216,7 +217,8 @@ class _AddContactState extends State<AddContact> {
                         Text('আরো তথ্য', style: TextStyle(color: Colors.green)),
                   ),
                   (more)
-                      ? Column(
+                      ?
+                  Column(
                           children: [
                             (image == null)
                                 ? IconButton(
@@ -229,7 +231,8 @@ class _AddContactState extends State<AddContact> {
                             buildTextFeild(noteController, 'নোট', false),
                             SizedBox(height: 20.0),
                           ],
-                        )
+                  )
+
                       : Text(''),
                 ],
               ),

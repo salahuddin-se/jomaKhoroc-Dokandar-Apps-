@@ -163,10 +163,10 @@ class _BechaBikriState extends State<BechaBikri> {
                     Get.to(TkMethod());
                   },
                   child: Obx(() => Text('মোট ৳' +
-                      calculatorController.totalSum.value.toString())),
+                      calculatorController.totalSum.value.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
                   style: ElevatedButton.styleFrom(
                     onPrimary: Colors.white,
-                    primary: Colors.blue[600],
+                    primary: Colors.teal[600],
                     textStyle: TextStyle(fontSize: 20.0),
                     minimumSize:
                         Size(MediaQuery.of(context).size.width * 0.9, 60),

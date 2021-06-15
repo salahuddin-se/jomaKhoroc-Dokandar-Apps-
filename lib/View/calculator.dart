@@ -65,7 +65,8 @@ class _CalculatorState extends State<Calculator> {
                                     hintText: 'পণ্যের নাম লিখুন',
                                     border: OutlineInputBorder(
                                         borderSide: BorderSide(
-                                            color: Colors.green, width: 1.0)),
+                                            color: Colors.teal,
+                                            width: 1.0)),
                                   ),
                                   controller: pNameController),
                               ElevatedButton(
@@ -76,7 +77,7 @@ class _CalculatorState extends State<Calculator> {
                                 },
                                 child: Text('যোগ করুন'),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
+                                  primary: Colors.teal[600],
                                   onPrimary: Colors.white,
                                 ),
                               ),
