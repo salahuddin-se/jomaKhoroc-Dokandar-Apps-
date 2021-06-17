@@ -4,6 +4,8 @@ import 'package:jomakhoroch/Model/catagory.dart';
 import 'package:jomakhoroch/Model/product.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
+
 class StockController extends GetxController {
   List<Product> productList = List<Product>.empty(growable: true).obs;
   List<Catagory> catList = List<Catagory>.empty(growable: true).obs;
@@ -42,6 +44,7 @@ class StockController extends GetxController {
                 double.parse(qSnap.docs[i]['BuyPrice']))
             .toString();
       }
+
       pList.add(
           Product
             (
@@ -58,6 +61,7 @@ class StockController extends GetxController {
           qSnap.docs[i].id
           )
       );
+
     }
 
     for (var elem in cat) {

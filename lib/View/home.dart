@@ -1,3 +1,5 @@
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +14,9 @@ import 'package:jomakhoroch/View/online_store.dart';
 import 'package:jomakhoroch/View/report.dart';
 import 'package:jomakhoroch/View/stock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'hishab_khata.dart';
+
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -50,11 +55,18 @@ class _HomeState extends State<Home> {
       child: Scaffold(
 
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(40.0),
+          preferredSize: Size.fromHeight(36.0),
           child: AppBar(
             backgroundColor: Colors.teal[600],
-            title: Text("জমা খরচ.কম",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-            centerTitle: true,
+            title: Row(
+
+              children: [
+                Text("জমা খরচ.কম",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                //Text(name,style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              ],
+
+            ),
+            centerTitle: false,
           ),
         ),
 
@@ -63,7 +75,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.all(10.0),
             child: Column(children: [
               SizedBox(
-                height: 15.0,
+                height: 5.0,
               ),
               Container(
                 //width: 335,
@@ -102,7 +114,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
+                                height: 5,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
@@ -111,8 +123,7 @@ class _HomeState extends State<Home> {
                                   child: Container(
                                       height: 90,
                                       width: 60,
-                                      child:
-                                      CircleAvatar(child: Image.asset("images/calculator.png"))),
+                                      child: Image.asset("images/calculator.png")),
                                 ),
                               ),
                               Padding(
@@ -134,8 +145,6 @@ class _HomeState extends State<Home> {
                     ),
 
 
-
-
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
@@ -149,10 +158,7 @@ class _HomeState extends State<Home> {
                               spreadRadius: 5, //spread radius
                               blurRadius: 7, // blur radius
                               offset: Offset(0, 2), // changes position of shadow
-                              //first paramerter of offset is left-right
-                              //second parameter is top to down
                             ),
-                            //you can set more BoxShadow() here
                           ],
                         ),
                         child: InkWell(
@@ -163,7 +169,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
+                                height: 5,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
@@ -197,6 +203,7 @@ class _HomeState extends State<Home> {
 
 
 
+
                     Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: Container(
@@ -224,21 +231,24 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
+                                height: 5,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                      height: 90,
-                                      width: 60,
+                                      // height: 90,
+                                      // width: 60,
+                                      height: 60,
+                                      width: 55,
                                       child:
                                       CircleAvatar(child: Image.asset("images/collection.png"))),
                                 ),
                               ),
+
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
+                                padding: const EdgeInsets.fromLTRB(29, 5, 8, 10),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -246,16 +256,17 @@ class _HomeState extends State<Home> {
                                       style: TextStyle(
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
-                                          color: Colors.black),
+                                          color: Colors.black
+                                      ),
                                     )
                                 ),
                               )
+
                             ],
                           ),
                         ),
                       ),
                     ),
-
 
 
 
@@ -285,14 +296,15 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
+                                height: 5,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: Container(
-                                      height: 90,
+                                      // height: 90,
+                                      height: 85,
                                       width: 60,
                                       child:
                                       CircleAvatar(child: Image.asset("images/onlineshop.png"))),
@@ -309,7 +321,8 @@ class _HomeState extends State<Home> {
                                           fontSize: 16.0,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-                                    )),
+                                    )
+                                ),
                               )
 
                             ],
@@ -348,7 +361,7 @@ class _HomeState extends State<Home> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
-                                height: 15,
+                                height: 5,
                               ),
                               Padding(
                                 padding: const EdgeInsets.only(top: 7),
@@ -361,6 +374,7 @@ class _HomeState extends State<Home> {
                                       CircleAvatar(child: Image.asset("images/dashboard.png"))),
                                 ),
                               ),
+
                               Padding(
                                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 8),
                                 child: Align(
@@ -373,6 +387,7 @@ class _HomeState extends State<Home> {
                                           color: Colors.black),
                                     )),
                               )
+
                             ],
                           ),
                         ),
@@ -384,9 +399,44 @@ class _HomeState extends State<Home> {
                   ],
                 ),
               ),
+
               SizedBox(
-                height: 20,
+                height: 15,
               ),
+
+
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                    width: 335,
+                    height: 180.0,
+                    child: Carousel(
+
+                        images: [
+                          AssetImage('images/f2.jpg'),
+                          AssetImage('images/f1.jpg'),
+                          AssetImage('images/f3.jpg'),
+                        ],
+
+                        autoplay: false,
+                        dotSize: 4,
+                        dotSpacing: 15,
+                        //dotColor: Colors.lightGreenAccent,
+                        indicatorBgPadding: 0,
+                        //dotBgColor: Colors.purple.withOpacity(0.5),
+                        borderRadius: false,
+                        moveIndicatorFromBottom: 180.0,
+                        overlayShadow: false,
+                        autoplayDuration: const Duration(seconds: 4)
+                    )
+                ),
+              ),
+
+
+              SizedBox(
+                height: 15,
+              ),
+
 
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 0, 8, 0),
@@ -459,7 +509,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                                padding: const EdgeInsets.fromLTRB(25, 0, 8, 0),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -513,7 +563,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
+                                padding: const EdgeInsets.fromLTRB(15, 2, 8, 0),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
@@ -721,7 +771,7 @@ class _HomeState extends State<Home> {
                         ),
                         child: InkWell(
                           onTap: () {
-                            Get.to(DashBoard());
+                            Get.to(HishabKhata());
                           },
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -743,7 +793,7 @@ class _HomeState extends State<Home> {
                               ),
 
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(15, 0, 8, 0),
+                                padding: const EdgeInsets.fromLTRB(25, 2, 8, 0),
                                 child: Align(
                                     alignment: Alignment.center,
                                     child: Text(

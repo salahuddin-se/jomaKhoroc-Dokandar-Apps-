@@ -68,7 +68,9 @@ class _CalculatorState extends State<Calculator> {
                                             color: Colors.teal,
                                             width: 1.0)),
                                   ),
-                                  controller: pNameController),
+                                  controller: pNameController
+                              ),
+
                               ElevatedButton(
                                 onPressed: () async {
                                   calculatorController.prodName.value =
@@ -81,6 +83,7 @@ class _CalculatorState extends State<Calculator> {
                                   onPrimary: Colors.white,
                                 ),
                               ),
+
                             ],
                           ),
                         ),

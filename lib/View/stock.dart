@@ -6,14 +6,12 @@ import 'package:jomakhoroch/View/stock_list.dart';
 
 class Stock extends StatefulWidget {
   const Stock({Key? key}) : super(key: key);
-
   @override
   _StockState createState() => _StockState();
 }
 
 class _StockState extends State<Stock> {
   final StockController stockController = Get.put(StockController());
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -34,6 +32,7 @@ class _StockState extends State<Stock> {
             ],
           ),
         ),
+
         body: Obx(
           () => (stockController.isLoad.value)
               ? Center(child: CircularProgressIndicator(color: Colors.green))
@@ -50,7 +49,7 @@ class _StockState extends State<Stock> {
                     CatagoryList(stockController.catList),
 
                   ],
-                ),
+          ),
         ),
       ),
     );

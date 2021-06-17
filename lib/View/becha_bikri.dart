@@ -13,7 +13,6 @@ import 'package:jomakhoroch/View/tk_method.dart';
 
 class BechaBikri extends StatefulWidget {
   const BechaBikri({Key? key}) : super(key: key);
-
   @override
   _BechaBikriState createState() => _BechaBikriState();
 }
@@ -118,6 +117,7 @@ class _BechaBikriState extends State<BechaBikri> {
                         ],
                       ),
                     ),
+
                     PopupMenuItem(
                       value: 'settings',
                       child: Row(
@@ -127,6 +127,7 @@ class _BechaBikriState extends State<BechaBikri> {
                         ],
                       ),
                     ),
+
                   ];
                 }
                 ),
@@ -141,7 +142,7 @@ class _BechaBikriState extends State<BechaBikri> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.calculate,), label: 'কশর্ট কাট,',
+                icon: Icon(Icons.calculate,), label: 'শর্টকাট,',
             ),
             BottomNavigationBarItem(icon: Icon(Icons.list,color: Colors.teal[700]), label: 'লিস্ট'),
           ],

@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:jomakhoroch/Controller/calculator_controller.dart';
 import 'package:jomakhoroch/View/contact_list.dart';
 import 'package:jomakhoroch/View/digital_payment.dart';
-import 'package:jomakhoroch/View/kisti.dart';
 import 'package:jomakhoroch/View/nogod_grohon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

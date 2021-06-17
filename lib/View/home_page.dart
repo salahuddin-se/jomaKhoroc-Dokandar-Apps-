@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jomakhoroch/View/home.dart';
 import 'package:jomakhoroch/View/inbox.dart';
+import 'package:jomakhoroch/View/online_store.dart';
 import 'package:jomakhoroch/View/subs.dart';
 import 'package:jomakhoroch/View/tools.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  final _pages = [Home(), Subs(), Inbox(), Tools()];
+  final _pages = [Home(), OnlineStore(), Inbox(), Tools()];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _HomePageState extends State<HomePage> {
           activeColor: Colors.green[100],
           items: [
             TabItem(icon: Icon(Icons.home), title: 'হোম'),
-            TabItem(icon: Icon(Icons.help), title: 'সাহায্য'),
+            TabItem(icon: Icon(Icons.help), title: 'অনলাইন স্টোর '),
             TabItem(icon: Icon(Icons.message), title: 'ইনবক্স'),
             TabItem(icon: Icon(Icons.settings), title: 'টুলস'),
           ],

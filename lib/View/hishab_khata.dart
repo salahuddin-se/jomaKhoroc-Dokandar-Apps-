@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jomakhoroch/Controller/dash_controller.dart';
-import 'package:jomakhoroch/View/daily.dart';
-import 'package:jomakhoroch/View/monthly.dart';
-import 'package:jomakhoroch/View/weekly.dart';
-import 'package:jomakhoroch/View/yearly.dart';
+import 'package:jomakhoroch/View/hishab_daily.dart';
+import 'package:jomakhoroch/View/hishab_monthy.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+import 'package:jomakhoroch/View/hishab_weekly.dart';
+import 'package:jomakhoroch/View/hishab_yearly.dart';
+
+
+
+class HishabKhata extends StatefulWidget {
+  const HishabKhata({Key? key}) : super(key: key);
 
   @override
-  _DashBoardState createState() => _DashBoardState();
+  _HishabKhataState createState() => _HishabKhataState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _HishabKhataState extends State<HishabKhata> {
   final DashController dashController = Get.put(DashController());
 
   @override
@@ -25,7 +28,7 @@ class _DashBoardState extends State<DashBoard> {
           iconTheme: IconThemeData(
             color: Colors.black, //change your color here
           ),
-          title: Text('ড্যাশবোর্ড', style: TextStyle(color: Colors.black)),
+          title: Text('হিসাব খাতা', style: TextStyle(color: Colors.black)),
           backgroundColor: Colors.white,
           bottom: TabBar(
             labelColor: Colors.black,
@@ -44,36 +47,20 @@ class _DashBoardState extends State<DashBoard> {
           )
               : TabBarView(
             children: [
-              Daily(
-                dashController.dtotalSale.value,
+              HishabDaily(
                 dashController.dtotalCollec.value,
-                dashController.dcntCollec.value,
-                dashController.dtotalCash.value,
-                dashController.dcntBaki.value,
                 dashController.dtotalBaki.value,
               ),
-              Weekly(
-                dashController.wtotalSale.value,
+              HishabWeekly(
                 dashController.wtotalCollec.value,
-                dashController.wcntCollec.value,
-                dashController.wtotalCash.value,
-                dashController.wcntBaki.value,
                 dashController.wtotalBaki.value,
               ),
-              Monthly(
-                dashController.mtotalSale.value,
+              HishabMonthly(
                 dashController.mtotalCollec.value,
-                dashController.mcntCollec.value,
-                dashController.mtotalCash.value,
-                dashController.mcntBaki.value,
                 dashController.mtotalBaki.value,
               ),
-              Yearly(
-                dashController.ytotalSale.value,
+              HishabYearly(
                 dashController.ytotalCollec.value,
-                dashController.ycntCollec.value,
-                dashController.ytotalCash.value,
-                dashController.ycntBaki.value,
                 dashController.ytotalBaki.value,
               ),
             ],

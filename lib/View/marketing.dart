@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:jomakhoroch/View/Marketing_fb.dart';
+import 'package:jomakhoroch/View/Marketing_msg.dart';
 import 'becha_bikri.dart';
 
 class Marketing extends StatefulWidget {
@@ -38,7 +40,7 @@ class _MarketingState extends State<Marketing> {
 
           InkWell(
             onTap: () {
-              Get.to(BechaBikri());
+              Get.to(MarketingSMS());
             },
             child: Container(
               decoration: BoxDecoration(
@@ -69,7 +71,7 @@ class _MarketingState extends State<Marketing> {
                       children: [
                         SizedBox(height: 15,),
                         Text("মেসেজিং",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.teal[600],),textAlign: TextAlign.justify),
-                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.justify),
+                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.normal,color: Colors.black,),textAlign: TextAlign.justify),
                       ],
                     ),
                   ),
@@ -78,7 +80,7 @@ class _MarketingState extends State<Marketing> {
                     child: Align(
                         alignment: Alignment.center,
                         child: Padding(
-                          padding: const EdgeInsets.only(left:5.0),
+                          padding: const EdgeInsets.only(right:5.0),
                           child: Image.asset("images/go.png"),
                         )
                     ),
@@ -100,7 +102,7 @@ class _MarketingState extends State<Marketing> {
 
           InkWell(
             onTap: () {
-              Get.to(BechaBikri());
+              Get.to(MarketingFB());
             },
             child: Container(
               decoration: BoxDecoration(
@@ -131,7 +133,7 @@ class _MarketingState extends State<Marketing> {
                       children: [
                         SizedBox(height: 15,),
                         Text("ফেইসবুক মার্কেটিং",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.teal[600],),textAlign: TextAlign.justify),
-                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.justify),
+                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.normal,color: Colors.black,),textAlign: TextAlign.justify),
                       ],
                     ),
                   ),
@@ -140,64 +142,7 @@ class _MarketingState extends State<Marketing> {
                     child: Align(
                         alignment: Alignment.center,
                         child: Padding(
-                          padding: const EdgeInsets.only(left:5.0),
-                          child: Image.asset("images/go.png"),
-                        )),
-                  ),
-
-                ],
-              ),
-            ),
-          ),
-
-
-          SizedBox(
-            height: 15,
-          ),
-
-          InkWell(
-            onTap: () {
-              Get.to(BechaBikri());
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow:[
-                  BoxShadow(
-                    color: Colors.grey[800]!.withOpacity(0.2), //color of shadow
-                    spreadRadius: 5, //spread radius
-                    blurRadius: 7, // blur radius
-                    offset: Offset(0, 2), // changes position of shadow
-                  ),
-                ],
-              ),
-              width: 330,
-              height: 80,
-              child: Row(
-
-                children: [
-                  Container(
-                    width: 70,
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Image.asset("images/msg.png")),
-                  ),
-                  Container(
-                    width: 220,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 15,),
-                        Text("ফেইসবুক মার্কেটিং",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.teal[600],),textAlign: TextAlign.justify),
-                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.justify),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 40,
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:5.0),
+                          padding: const EdgeInsets.only(right:5.0),
                           child: Image.asset("images/go.png"),
                         )),
                   ),
@@ -213,64 +158,14 @@ class _MarketingState extends State<Marketing> {
           ),
 
 
-          InkWell(
-            onTap: () {
-              Get.to(BechaBikri());
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow:[
-                  BoxShadow(
-                    color: Colors.grey[800]!.withOpacity(0.2), //color of shadow
-                    spreadRadius: 5, //spread radius
-                    blurRadius: 7, // blur radius
-                    offset: Offset(0, 2), // changes position of shadow
-                  ),
-                ],
-              ),
-              width: 330,
-              height: 80,
-              child: Row(
-
-                children: [
-
-                  Container(
-                    width: 70,
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Image.asset("images/msg.png")),
-                  ),
-
-                  Container(
-                    width: 220,
-                    child: Column(
-                      children: [
-                        SizedBox(height: 15,),
-                        Text("ফেইসবুক মার্কেটিং",style: TextStyle(fontSize: 18.0,fontWeight: FontWeight.bold,color: Colors.teal[600],),textAlign: TextAlign.justify),
-                        Text("মার্কেটিং হবে স্মাট উপায়ে",style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold,color: Colors.black,),textAlign: TextAlign.justify),
-                      ],
-                    ),
-                  ),
-
-                  Container(
-                    width: 40,
-                    child: Align(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left:5.0),
-                          child: Image.asset("images/go.png"),
-                        )
-                    ),
-                  ),
 
 
-                ],
-              ),
-            ),
-          ),
 
-//
+
+        //
+        SizedBox(height: 20.0,),
+
+
 
         ],
       ),

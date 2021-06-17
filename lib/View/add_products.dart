@@ -59,7 +59,8 @@ class _AddProductsState extends State<AddProducts> {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     String sellerPhone = sharedPreferences.getString('Phone').toString();
 
-    if (image == null || productController.text.trim() == '') {
+    //image == null ||
+    if (productController.text.trim() == '') {
       Get.snackbar('Error', 'Please fill image and product name');
     } else {
       var snapshot = await FirebaseStorage.instance
@@ -128,7 +129,8 @@ class _AddProductsState extends State<AddProducts> {
         height: 60.0,
         child: Padding(
           padding: const EdgeInsets.only(
-              top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
+              top: 8.0, bottom: 8.0, left: 20.0, right: 20.0
+          ),
           child: ElevatedButton(
             onPressed: btnTap,
             child: Text('এগিয়ে যান'),
@@ -163,6 +165,7 @@ class _AddProductsState extends State<AddProducts> {
                   )),
             ),
           ),
+
         ],
       ),
       body: SingleChildScrollView(
@@ -174,6 +177,8 @@ class _AddProductsState extends State<AddProducts> {
                   alignment: Alignment.topLeft,
                   child: Text('পণ্যের ছবি যোগ করুন')
               ),
+
+
               Align(
                 alignment: Alignment.topLeft,
                 child: Row(
@@ -181,13 +186,15 @@ class _AddProductsState extends State<AddProducts> {
                     IconButton(
                         onPressed: cameraTap,
                         icon: Icon(Icons.camera_alt_rounded,
-                            color: Colors.green, size: 45.0)),
+                            color: Colors.green, size: 45.0)
+                    ),
                     (image == null)
                         ? Text('')
                         : Image.file(image, height: 100, width: 100),
                   ],
                 ),
               ),
+
               SizedBox(height: 40.0),
               Card(
                 child: DropdownButton(
@@ -228,7 +235,7 @@ class _AddProductsState extends State<AddProducts> {
                   Expanded(
                       flex: 1,
                       child:
-                          buildTextFeild(discountController, 'চাড়ের পরিমান')),
+                          buildTextFeild(discountController, 'ছাড়ের পরিমান')),
                 ],
               ),
               buildTextFeild(stockController, 'স্টকের সংখ্যা'),

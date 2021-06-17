@@ -42,8 +42,7 @@ class _StockListState extends State<StockList> {
                   Align(
                       alignment: Alignment.topRight,
                       child: Expanded(
-                          child: Text('ক্রয়মূল্য ৳${widget.totalB}',
-                              style: TextStyle(color: Colors.grey)))),
+                          child: Text('ক্রয়মূল্য ৳${widget.totalB}',style: TextStyle(color: Colors.grey)))),
                 ],
               ),
             ),
