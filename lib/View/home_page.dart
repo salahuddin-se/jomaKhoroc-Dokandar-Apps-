@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:jomakhoroch/View/home.dart';
 import 'package:jomakhoroch/View/inbox.dart';
 import 'package:jomakhoroch/View/online_store.dart';
-import 'package:jomakhoroch/View/subs.dart';
 import 'package:jomakhoroch/View/tools.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 
@@ -31,16 +30,15 @@ class _HomePageState extends State<HomePage> {
             TabItem(icon: Icon(Icons.message), title: 'ইনবক্স'),
             TabItem(icon: Icon(Icons.settings), title: 'টুলস'),
           ],
-
           onTap: (int i) {
             setState(() {
               _currentIndex = i;
             });
           },
-
         ),
         body: _pages[_currentIndex],
       ),
     );
   }
+
 }

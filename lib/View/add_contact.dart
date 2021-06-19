@@ -90,6 +90,7 @@ class _AddContactState extends State<AddContact> {
           Get.snackbar('Error', error.toString());
         });
       }
+
     }
   }
 

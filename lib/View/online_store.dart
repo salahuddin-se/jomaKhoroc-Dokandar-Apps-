@@ -247,9 +247,9 @@ class _OnlineStoreState extends State<OnlineStore> {
                     Icons.add_circle_outline
                 ),
                 SizedBox(height: 10.0),
-                buildButton(addBtn, 'অনলাইন স্টোরে সম্পর্কিত তথ্য',
-                    Icons.question_answer, Icons.arrow_forward
-                ),
+                // buildButton(addBtn, 'অনলাইন স্টোরে সম্পর্কিত তথ্য',
+                //     Icons.question_answer, Icons.arrow_forward
+                // ),
 
               ],
             ),

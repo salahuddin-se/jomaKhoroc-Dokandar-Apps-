@@ -108,25 +108,26 @@ class _BechaBikriState extends State<BechaBikri> {
                         ],
                       ),
                     ),
-                    PopupMenuItem(
-                      value: 'how',
-                      child: Row(
-                        children: [
-                          Icon(Icons.video_call_sharp, color: Colors.green),
-                          Text('কিভাবে ব্যবহার করবেন'),
-                        ],
-                      ),
-                    ),
-
-                    PopupMenuItem(
-                      value: 'settings',
-                      child: Row(
-                        children: [
-                          Icon(Icons.settings, color: Colors.green),
-                          Text('সেটিংস'),
-                        ],
-                      ),
-                    ),
+                    // PopupMenuItem(
+                    //   value: 'how',
+                    //   child: Row(
+                    //     children: [
+                    //       Icon(Icons.video_call_sharp, color: Colors.green),
+                    //       Text('কিভাবে ব্যবহার করবেন'),
+                    //     ],
+                    //   ),
+                    // ),
+                    //
+                    // PopupMenuItem(
+                    //   value: 'settings',
+                    //   child: Row(
+                    //     children: [
+                    //       Icon(Icons.settings, color: Colors.green),
+                    //       Text('সেটিংস'),
+                    //     ],
+                    //
+                    //   ),
+                    // ),
 
                   ];
                 }
@@ -142,7 +143,7 @@ class _BechaBikriState extends State<BechaBikri> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.calculate,), label: 'শর্টকাট,',
+                icon: Icon(Icons.calculate,), label: 'শর্টকাট',
             ),
             BottomNavigationBarItem(icon: Icon(Icons.list,color: Colors.teal[700]), label: 'লিস্ট'),
           ],
