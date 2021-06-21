@@ -8,7 +8,6 @@ import 'package:jomakhoroch/View/calculator.dart';
 import 'package:jomakhoroch/View/contact_list.dart';
 import 'package:jomakhoroch/View/prod_list.dart';
 import 'package:jomakhoroch/View/stock.dart';
-import 'package:jomakhoroch/View/subs.dart';
 import 'package:jomakhoroch/View/tk_method.dart';
 
 class BechaBikri extends StatefulWidget {
@@ -56,9 +55,9 @@ class _BechaBikriState extends State<BechaBikri> {
                   } else if (value.toString() == 'bikri-khata') {
                     Get.to(BikrirKhata());
                   } else if (value.toString() == 'how') {
-                    Get.to(Subs());
+                    //Get.to(Subs());
                   } else {
-                    Get.to(Subs());
+                    //Get.to(Subs());
                   }
                 },
                 itemBuilder: (BuildContext context) {
@@ -108,26 +107,7 @@ class _BechaBikriState extends State<BechaBikri> {
                         ],
                       ),
                     ),
-                    // PopupMenuItem(
-                    //   value: 'how',
-                    //   child: Row(
-                    //     children: [
-                    //       Icon(Icons.video_call_sharp, color: Colors.green),
-                    //       Text('কিভাবে ব্যবহার করবেন'),
-                    //     ],
-                    //   ),
-                    // ),
-                    //
-                    // PopupMenuItem(
-                    //   value: 'settings',
-                    //   child: Row(
-                    //     children: [
-                    //       Icon(Icons.settings, color: Colors.green),
-                    //       Text('সেটিংস'),
-                    //     ],
-                    //
-                    //   ),
-                    // ),
+
 
                   ];
                 }

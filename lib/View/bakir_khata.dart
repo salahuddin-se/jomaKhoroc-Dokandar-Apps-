@@ -5,7 +5,6 @@ import 'package:jomakhoroch/Services/pdf_api.dart';
 import 'package:jomakhoroch/View/contact_list.dart';
 import 'package:jomakhoroch/View/report.dart';
 import 'package:jomakhoroch/View/stock.dart';
-import 'package:jomakhoroch/View/subs.dart';
 
 class BakirKhata extends StatefulWidget {
   const BakirKhata({Key? key}) : super(key: key);
@@ -40,11 +39,11 @@ class _BakirKhataState extends State<BakirKhata> {
               offset: Offset(0, 40),
               onSelected: (value) {
                 if (value.toString() == 'pdf') {
-                  Get.to(Subs());
+                  //Get.to(Subs());
                 } else if (value.toString() == 'how') {
-                  Get.to(Subs());
+                  //Get.to(Subs());
                 } else if (value.toString() == 'faq') {
-                  Get.to(Subs());
+                  //Get.to(Subs());
                 } else {
                   Get.to(Stock());
                 }

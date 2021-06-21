@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class TkMethod extends StatefulWidget {
   const TkMethod({Key? key}) : super(key: key);
-
   @override
   _TkMethodState createState() => _TkMethodState();
 }

@@ -277,7 +277,9 @@ class _AddProductsState extends State<AddProducts> {
                   ),
                 ),
               ),
+
               SizedBox(height: 40.0),
+
               buildTextFeild(desController, 'পণ্যের বর্ণনা'),
             ],
           ),

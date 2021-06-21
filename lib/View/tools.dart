@@ -9,7 +9,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class Tools extends StatefulWidget {
   const Tools({Key? key}) : super(key: key);
-
   @override
   _ToolsState createState() => _ToolsState();
 }
