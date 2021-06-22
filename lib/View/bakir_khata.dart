@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/Controller/baki_controller.dart';
-import 'package:jomakhoroch/Services/pdf_api.dart';
-import 'package:jomakhoroch/View/contact_list.dart';
-import 'package:jomakhoroch/View/report.dart';
-import 'package:jomakhoroch/View/stock.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/baki_controller.dart';
+import 'package:jomakhoroch/Tally_Khata/pdf_api.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/contact_list.dart';
+import 'package:jomakhoroch/Tally_Khata/report.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/stock.dart';
 
 class BakirKhata extends StatefulWidget {
-  const BakirKhata({Key? key}) : super(key: key);
+  const BakirKhata(bool bool, {Key? key}) : super(key: key);
 
   @override
   _BakirKhataState createState() => _BakirKhataState();
@@ -45,7 +45,7 @@ class _BakirKhataState extends State<BakirKhata> {
                 } else if (value.toString() == 'faq') {
                   //Get.to(Subs());
                 } else {
-                  Get.to(Stock());
+                  Get.to(Stock(true));
                 }
               },
               itemBuilder: (BuildContext context) {

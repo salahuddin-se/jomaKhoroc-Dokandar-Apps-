@@ -1,23 +1,23 @@
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/baki_controller.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/contact_list_controller.dart';
-import 'package:jomakhoroch/Contact_List/contact.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/contact_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class EditContact extends StatefulWidget {
-  final Contact contact;
-  const EditContact(this.contact);
-
+class AddContact extends StatefulWidget {
+  final String type;
+  const AddContact(this.type);
   @override
-  _EditContactState createState() => _EditContactState();
+  _AddContactState createState() => _AddContactState();
 }
 
-class _EditContactState extends State<EditContact> {
+class _AddContactState extends State<AddContact> {
+
   TextEditingController phoneController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -30,48 +30,67 @@ class _EditContactState extends State<EditContact> {
 
   @override
   void initState() {
+    print(widget.type.toString() + ' !!!!!!');
     super.initState();
-
-    String phone = widget.contact.phone;
-    String name = widget.contact.name;
-    String email = widget.contact.email;
-    String add = widget.contact.address;
-    String note = widget.contact.note;
-
-    phoneController = TextEditingController(text: phone);
-    nameController = TextEditingController(text: name);
-    emailController = TextEditingController(text: email);
-    addController = TextEditingController(text: add);
-    noteController = TextEditingController(text: note);
-
-    onlineGroupValue = widget.contact.type;
   }
 
-  Widget buildTextFeild(controller, String label, bool icon) {
-    return TextField(
-      enabled: (label == 'মোবাইল নম্বর') ? false : true,
-      maxLength: (icon) ? 14 : null,
-      controller: controller,
-      keyboardType: (icon) ? TextInputType.number : TextInputType.text,
-      decoration: InputDecoration(
-        suffixIcon:
-            (icon) ? Icon(Icons.contact_page, color: Colors.green) : null,
-        labelText: label,
-        labelStyle: TextStyle(fontSize: 16.0),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0)),
-      ),
-    );
-  }
+  void btnTap() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String sellerPhone = sharedPreferences.getString('Phone').toString();
 
-  void moreTap() {
-    setState(() {
-      if (more) {
-        more = false;
-      } else {
-        more = true;
+    if (phoneController.text.trim() == '' || nameController.text.trim() == '') {
+      Get.snackbar('Error', 'Please fill mobile number and name');
+    } else {
+      if (image == null) {
+        await FirebaseFirestore.instance.collection('Contacts').doc().set({
+          'Phone': '+88' + phoneController.text.trim(),
+          'Name': nameController.text.trim(),
+          'imageUrl': 'null',
+          'Emai;': emailController.text.trim(),
+          'Address': addController.text.trim(),
+          'Note': noteController.text.trim(),
+          'Type': onlineGroupValue,
+          'Seller': sellerPhone,
+        }).then((value) {
+          Get.delete<ContactListController>();
+          if (widget.type == 'Baki') {
+            Get.off(ContactList(true, false));
+          } else {
+            Get.off(ContactList(false, true));
+          }
+        });
       }
-    });
+
+      else {
+        var snapshot = await FirebaseStorage.instance
+            .ref()
+            .child(
+                'Profile/+88${phoneController.text.trim()}${nameController.text.trim()}${DateTime.now()}')
+            .putFile(image);
+        snapshot.ref.getDownloadURL().then((value) async {
+          await FirebaseFirestore.instance.collection('Contacts').doc().set({
+            'Phone': '+88' + phoneController.text.trim(),
+            'Name': nameController.text.trim(),
+            'imageUrl': value,
+            'Emai;': emailController.text.trim(),
+            'Address': addController.text.trim(),
+            'Note': noteController.text.trim(),
+            'Type': onlineGroupValue,
+          }).then((value) {
+            Get.delete<ContactListController>();
+            Get.delete<BakiController>();
+            if (widget.type == 'Baki') {
+              Get.off(ContactList(true, false));
+            } else {
+              Get.off(ContactList(false, false));
+            }
+          });
+        }).onError((error, stackTrace) {
+          Get.snackbar('Error', error.toString());
+        });
+      }
+
+    }
   }
 
   void cameraTap() async {
@@ -86,48 +105,31 @@ class _EditContactState extends State<EditContact> {
     });
   }
 
-  void btnTap() async {
-    if (image == null) {
-      await FirebaseFirestore.instance
-          .collection('Contacts')
-          .doc(widget.contact.id)
-          .update({
-        'Name': nameController.text.trim(),
-        'Emai;': emailController.text.trim(),
-        'Address': addController.text.trim(),
-        'Note': noteController.text.trim(),
-        'Type': onlineGroupValue,
-      }).then((value) {
-        Get.delete<ContactListController>();
-        Get.off(ContactList(false, true));
-      }).onError((error, stackTrace) {
-        Get.snackbar('Error', error.toString());
-      });
-    } else {
-      var snapshot = await FirebaseStorage.instance
-          .ref()
-          .child(
-              'Profile/+88${phoneController.text.trim()}${nameController.text.trim()}${DateTime.now()}')
-          .putFile(image);
-      snapshot.ref.getDownloadURL().then((value) async {
-        await FirebaseFirestore.instance
-            .collection('Contacts')
-            .doc(widget.contact.id)
-            .update({
-          'Name': nameController.text.trim(),
-          'Emai;': emailController.text.trim(),
-          'Address': addController.text.trim(),
-          'Note': noteController.text.trim(),
-          'Type': onlineGroupValue,
-          'imageUrl': value,
-        }).then((value) {
-          Get.delete<ContactListController>();
-          Get.off(ContactList(false, true));
-        });
-      }).onError((error, stackTrace) {
-        Get.snackbar('Error', error.toString());
-      });
-    }
+  void moreTap() {
+    setState(() {
+      if (more) {
+        more = false;
+      } else {
+        more = true;
+      }
+    });
+  }
+
+  Widget buildTextFeild(controller, String label, bool icon) {
+    return TextField(
+      maxLength: (icon) ? 11 : null,
+      controller: controller,
+      keyboardType: (icon) ? TextInputType.number : TextInputType.text,
+      decoration: InputDecoration(
+        suffixIcon:
+            (icon) ? Icon(Icons.contact_page, color: Colors.green) : null,
+        labelText: label,
+        labelStyle: TextStyle(fontSize: 16.0),
+        focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.green, width: 2.0)
+        ),
+      ),
+    );
   }
 
   @override
@@ -156,7 +158,7 @@ class _EditContactState extends State<EditContact> {
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),
-        title: Text('এডিট কন্টাক্ট', style: TextStyle(color: Colors.black)),
+        title: Text('নতুন কন্টাক্ট', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
       body: Container(
@@ -215,7 +217,8 @@ class _EditContactState extends State<EditContact> {
                         Text('আরো তথ্য', style: TextStyle(color: Colors.green)),
                   ),
                   (more)
-                      ? Column(
+                      ?
+                  Column(
                           children: [
                             (image == null)
                                 ? IconButton(
@@ -228,7 +231,8 @@ class _EditContactState extends State<EditContact> {
                             buildTextFeild(noteController, 'নোট', false),
                             SizedBox(height: 20.0),
                           ],
-                        )
+                  )
+
                       : Text(''),
                 ],
               ),

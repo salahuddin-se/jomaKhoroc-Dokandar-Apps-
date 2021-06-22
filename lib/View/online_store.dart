@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/Controller/online_store_controller.dart';
-import 'package:jomakhoroch/View/add_products.dart';
-import 'package:jomakhoroch/View/stock.dart';
+import 'package:jomakhoroch/Online_Store/online_store_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/add_products.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/stock.dart';
 
 class OnlineStore extends StatefulWidget {
   const OnlineStore({Key? key}) : super(key: key);
@@ -143,7 +143,7 @@ class _OnlineStoreState extends State<OnlineStore> {
                 SizedBox(height: 10.0),
                 GestureDetector(
                   onTap: () {
-                    Get.to(Stock());
+                    Get.to(Stock(true));
                   },
                   child: Card(
                     child: Padding(
@@ -178,9 +178,7 @@ class _OnlineStoreState extends State<OnlineStore> {
                     Icons.add_circle_outline
                 ),
                 SizedBox(height: 10.0),
-                // buildButton(addBtn, 'অনলাইন স্টোরে সম্পর্কিত তথ্য',
-                //     Icons.question_answer, Icons.arrow_forward
-                // ),
+
 
               ],
             ),

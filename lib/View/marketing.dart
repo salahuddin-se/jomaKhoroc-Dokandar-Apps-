@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/View/Marketing_fb.dart';
-import 'package:jomakhoroch/View/Marketing_msg.dart';
-import 'becha_bikri.dart';
+import 'package:jomakhoroch/Marketing&Promo/Marketing_fb.dart';
+import 'package:jomakhoroch/Marketing&Promo/Marketing_msg.dart';
+import '../Kroy_Bikroy/becha_bikri.dart';
 
 class Marketing extends StatefulWidget {
   const Marketing({Key? key}) : super(key: key);

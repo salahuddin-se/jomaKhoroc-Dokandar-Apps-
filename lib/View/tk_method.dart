@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/Controller/calculator_controller.dart';
-import 'package:jomakhoroch/View/contact_list.dart';
-import 'package:jomakhoroch/View/digital_payment.dart';
-import 'package:jomakhoroch/View/nogod_grohon.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/calculator_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/contact_list.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/digital_payment.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/nogod_grohon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TkMethod extends StatefulWidget {
