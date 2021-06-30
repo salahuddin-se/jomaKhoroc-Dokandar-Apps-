@@ -269,7 +269,7 @@ class _CustomerReportState extends State<CustomerReport> {
                 buildText('সময়সীমা'),
                 DropdownButton(
                   hint: Text(hintText),
-                  icon: Icon(Icons.arrow_downward, color: Colors.green),
+                  icon: Icon(Icons.arrow_downward, color: Colors.teal),
                   iconSize: 25.0,
                   isExpanded: true,
                   onChanged: (value) {
@@ -309,7 +309,8 @@ class _CustomerReportState extends State<CustomerReport> {
                     Spacer(),
                     IconButton(
                         onPressed: () => datePick1(context),
-                        icon: Icon(Icons.calendar_today, color: Colors.green))
+                        icon: Icon(Icons.calendar_today, color: Colors.teal)
+                    )
                   ],
                 ),
                 Divider(),
@@ -321,7 +322,7 @@ class _CustomerReportState extends State<CustomerReport> {
                     Spacer(),
                     IconButton(
                         onPressed: () => datePick2(context),
-                        icon: Icon(Icons.calendar_today, color: Colors.green))
+                        icon: Icon(Icons.calendar_today, color: Colors.teal))
                   ],
                 ),
                 Divider(),
@@ -334,7 +335,7 @@ class _CustomerReportState extends State<CustomerReport> {
                     icon: Icon(Icons.settings),
                     label: Text('রিপোর্ট রেডি করুন'),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
+                      primary: Colors.teal,
                       onPrimary: Colors.white,
                       minimumSize:
                       Size(MediaQuery.of(context).size.width * 0.9, 50),

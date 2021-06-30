@@ -177,7 +177,7 @@ class _BakiDetailsState extends State<BakiDetails> {
                       SizedBox(height: 10.0),
                       Row(
                         children: [
-                          Expanded(flex: 3, child: Text('এন্ট্রি গুলো')),
+                          Expanded(flex: 3, child: Text('  এন্ট্রি গুলো')),
                           Expanded(flex: 1, child: Text('বাকি')),
                           Expanded(flex: 1, child: Text('জমা')),
                         ],

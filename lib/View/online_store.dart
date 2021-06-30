@@ -85,92 +85,61 @@ class _OnlineStoreState extends State<OnlineStore> {
               children: [
                 // buildButton(settingBtn, 'অনলাইন স্টোরে সেটিং', Icons.settings,
                 //     Icons.arrow_forward_ios_outlined),
-                SizedBox(height: 10.0),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('অনলাইন স্টোরের হিসাব',style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
-                        ),
-                        Row(
-                          children: [
-
-                            Expanded(
-                              child: buildCard('মোট অর্ডার', '0'),
-                            ),
-
-                            Expanded(
-                              child: buildCard('মোট বিক্রি', '0'),
-                            ),
-
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10.0),
-                Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        Align(
-                            alignment: Alignment.topLeft,
-                            child: Text('বর্তমান অর্ডার',
-                                style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
-                        ),
-
-                        Row(
-                          children: [
-                            Expanded(
-                              child: buildCard('নতুন', '0'),
-                            ),
-                            Expanded(
-                              child: buildCard('চলতি কমপ্লিট', '0'),
-                            ),
-                            Expanded(
-                              child: buildCard('কমপ্লিট', '0'),
-                            )
-                          ],
-                        ),
-
-                      ],
-                    ),
-                  ),
-                ),
-                SizedBox(height: 10.0),
-                GestureDetector(
-                  onTap: () {
-                    Get.to(Stock(true));
-                  },
+                SizedBox(height: 15.0),
+                Container(
+                  color: Colors.teal,
                   child: Card(
                     child: Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-
                           Align(
                               alignment: Alignment.topLeft,
-                              child: Text('পণ্যের হিসাব',
+                              child: Text('অনলাইন স্টোরের হিসাব',style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
+                          ),
+                          Row(
+                            children: [
+
+                              Expanded(
+                                child: buildCard('মোট অর্ডার', '0'),
+                              ),
+
+                              Expanded(
+                                child: buildCard('মোট বিক্রি', '0'),
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15.0),
+                Container(
+                  color: Colors.teal,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Align(
+                              alignment: Alignment.topLeft,
+                              child: Text('বর্তমান অর্ডার',
                                   style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
                           ),
 
                           Row(
                             children: [
                               Expanded(
-                                child: buildCard('মোট পণ্য',
-                                    onlineStoreController.totalProd.toString()),
+                                child: buildCard('নতুন', '0'),
                               ),
                               Expanded(
-                                child: buildCard(
-                                    'পাবলিশড পণ্য',
-                                    onlineStoreController.onlineProd
-                                        .toString()),
+                                child: buildCard('চলতি কমপ্লিট', '0'),
                               ),
+                              Expanded(
+                                child: buildCard('কমপ্লিট', '0'),
+                              )
                             ],
                           ),
 
@@ -179,11 +148,56 @@ class _OnlineStoreState extends State<OnlineStore> {
                     ),
                   ),
                 ),
+                SizedBox(height: 15.0),
+                Container(
+                  color: Colors.teal,
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(Stock(true));
+                    },
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
 
-                SizedBox(height: 10.0),
+                            Align(
+                                alignment: Alignment.topLeft,
+                                child: Text('পণ্যের হিসাব',
+                                    style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
+                            ),
 
-                buildButton(addBtn, 'নতুন পণ্য যোগ করুন', Icons.add_box,
-                    Icons.add_circle_outline),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: buildCard('মোট পণ্য',
+                                      onlineStoreController.totalProd.toString()),
+                                ),
+                                Expanded(
+                                  child: buildCard(
+                                      'পাবলিশড পণ্য',
+                                      onlineStoreController.onlineProd
+                                          .toString()),
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 20.0),
+
+                Container(
+                  color: Colors.teal,
+                  child: buildButton(
+                      addBtn, 'পণ্য এন্ট্রি করুন', Icons.add_box,
+                      Icons.add_circle_outline
+                  ),
+                ),
 
                 SizedBox(height: 10.0),
 

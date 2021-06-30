@@ -23,13 +23,13 @@ class _LoadingAnimationState extends State<LoadingAnimation> {
                 ? Container(
                     color: Colors.white,
                     child: Center(
-                        child: CircularProgressIndicator(color: Colors.green)))
+                        child: CircularProgressIndicator(color: Colors.teal)))
                 : ReportResult(reportController.cusList))
             : ((reportController.isLoad1.value)
                 ? Container(
                     color: Colors.white,
                     child: Center(
-                        child: CircularProgressIndicator(color: Colors.green)))
+                        child: CircularProgressIndicator(color: Colors.teal)))
                 : ReportResult1(reportController.prodList)),
       ),
     );

@@ -219,9 +219,9 @@ class _StockListState extends State<StockList> {
                   ? Column(
                 children: [
                   ListTile(
-                    onTap: () {
-                      Get.to(ProdDet(widget.pList[index]));
-                    },
+                    // onTap: () {
+                    //   Get.to(ProdDet(widget.pList[index]));
+                    // },
                     title: Text(widget.pList[index].product,
                         style:
                         TextStyle(fontWeight: FontWeight.bold)),

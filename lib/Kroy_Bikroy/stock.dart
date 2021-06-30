@@ -7,7 +7,6 @@ import 'package:jomakhoroch/Kroy_Bikroy/stock_list.dart';
 class Stock extends StatefulWidget {
   const Stock(bool bool , {Key? key}) : super(key: key);
   @override
-
   _StockState createState() => _StockState();
 }
 

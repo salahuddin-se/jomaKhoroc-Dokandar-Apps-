@@ -18,11 +18,12 @@ class _ReportState extends State<Report> {
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
         ),
-        title: Text('রিপোর্ট', style: TextStyle(color: Colors.black)),
+        title: Text('লেনদেন রিপোর্ট', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
       ),
       body: ListView(
         children: [
+
           Padding(
             padding: const EdgeInsets.all(12.0),
             child: Card(
