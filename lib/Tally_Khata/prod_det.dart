@@ -31,38 +31,53 @@ class _ProdDetState extends State<ProdDet> {
             padding: const EdgeInsets.all(8.0),
             child: TextButton.icon(
               style: TextButton.styleFrom(
-                primary: Colors.green,
+                primary: Colors.teal,
               ),
-              label: Text('এডিট করুন'),
-              icon: Icon(Icons.edit, color: Colors.green),
+              label: Text('পরিবর্তন করুন'),
+              icon: Icon(Icons.edit, color: Colors.teal),
               onPressed: () {
                 Get.to(EditProd(widget.prod));
               },
             ),
+
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: Colors.grey[200],
-              height: 200,
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                children: [
-                  (widget.prod.imgUrl == 'null')
-                      ? Image.asset('images/box.png', height: 180)
-                      : Image.network(widget.prod.imgUrl, height: 180),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(widget.prod.catagory,
-                        style: TextStyle(
-                            color: Colors.green, fontWeight: FontWeight.bold)),
-                  ),
-                ],
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                //color: Colors.grey[200],
+                color: Colors.white,
+                height: 200,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    (widget.prod.imgUrl == 'null')
+                        ? Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset('images/box.png', height: 180),
+                        )
+                        : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.network(widget.prod.imgUrl, height: 180),
+                        ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5.0),
+                        child: Text(widget.prod.catagory,
+                            style: TextStyle(
+                                color: Colors.teal, fontWeight: FontWeight.bold)),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
+
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -82,7 +97,7 @@ class _ProdDetState extends State<ProdDet> {
                                 child: Expanded(
                                     child: Text('৳${widget.prod.sell}',
                                         style: TextStyle(
-                                            color: Colors.yellow[800])))),
+                                            color: Colors.red)))),
                           ],
                         ),
                         SizedBox(height: 12.0),
@@ -112,7 +127,7 @@ class _ProdDetState extends State<ProdDet> {
                                                           borderSide:
                                                               BorderSide(
                                                                   color: Colors
-                                                                      .green,
+                                                                      .teal,
                                                                   width: 1.0)),
                                                     ),
                                                     controller:
@@ -138,7 +153,7 @@ class _ProdDetState extends State<ProdDet> {
                                                   child: Text('যোগ করুন'),
                                                   style:
                                                       ElevatedButton.styleFrom(
-                                                    primary: Colors.green,
+                                                    primary: Colors.teal,
                                                     onPrimary: Colors.white,
                                                   ),
                                                 ),
@@ -149,7 +164,7 @@ class _ProdDetState extends State<ProdDet> {
                                 icon: Icon(Icons.add),
                                 label: Text('স্টক যোগ করুন'),
                                 style: ElevatedButton.styleFrom(
-                                  primary: Colors.green,
+                                  primary: Colors.teal,
                                   onPrimary: Colors.white,
                                 ),
                               ),
@@ -162,7 +177,7 @@ class _ProdDetState extends State<ProdDet> {
                                 label: Text('শেয়ার করুন'),
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
-                                  onPrimary: Colors.green,
+                                  onPrimary: Colors.teal,
                                 ),
                               ),
                             )
@@ -180,7 +195,7 @@ class _ProdDetState extends State<ProdDet> {
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text('বিক্রয় মূল্য',
-                                    style: TextStyle(color: Colors.grey)),
+                                    style: TextStyle(color: Colors.black)),
                               ),
                               Align(
                                   alignment: Alignment.topLeft,
@@ -192,7 +207,7 @@ class _ProdDetState extends State<ProdDet> {
                               Align(
                                 alignment: Alignment.topLeft,
                                 child: Text('পাইকারি বিক্রয় মূল্য',
-                                    style: TextStyle(color: Colors.grey)),
+                                    style: TextStyle(color: Colors.black)),
                               ),
                               Align(
                                   alignment: Alignment.topLeft,
@@ -202,20 +217,22 @@ class _ProdDetState extends State<ProdDet> {
                             flex: 1,
                             child: Column(children: [
                               Text('ক্রয় মূল্য',
-                                  style: TextStyle(color: Colors.grey)),
+                                  style: TextStyle(color: Colors.black)),
                               Text('৳${widget.prod.buy}'),
                             ])),
                       ],
                     ),
                     SizedBox(height: 10.0),
-                    Row(children: [
-                      Expanded(
+
+                    Row(
+                        children: [
+                          Expanded(
                           flex: 1,
                           child: Column(children: [
                             Align(
                                 alignment: Alignment.topLeft,
                                 child: Text('ভ্যাট',
-                                    style: TextStyle(color: Colors.grey))),
+                                    style: TextStyle(color: Colors.black))),
                             Align(
                                 alignment: Alignment.topLeft,
                                 child: Text('নাই')),
@@ -226,13 +243,15 @@ class _ProdDetState extends State<ProdDet> {
                             Align(
                               alignment: Alignment.topLeft,
                               child: Text('ডিসকাউন্ট',
-                                  style: TextStyle(color: Colors.grey)),
+                                  style: TextStyle(color: Colors.black)),
                             ),
                             Align(
                                 alignment: Alignment.topLeft,
                                 child: Text('${widget.prod.discount}')),
                           ])),
-                    ]),
+                    ]
+                    ),
+
                   ],
                 ),
               ),

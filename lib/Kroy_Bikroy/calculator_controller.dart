@@ -16,6 +16,7 @@ class CalculatorController extends GetxController {
   }
 
   void btnClear() {
+    print(totalSum.toString() + ' xxxxxxxx ' + totalTk.toString());
     if (double.parse(totalSum.value) > 0.0) {
       totalSum.value =
           ((double.parse(totalSum.value) - double.parse(totalTk.value))
@@ -47,8 +48,7 @@ class CalculatorController extends GetxController {
         totalTk.value = totalTk.value
             .toString()
             .substring(0, totalTk.value.toString().length - 1);
-      }
-      else {
+      } else {
         totalSum.value =
             (double.parse(totalSum.value) - double.parse(totalTk.value))
                 .toString();
@@ -65,7 +65,6 @@ class CalculatorController extends GetxController {
             (double.parse(totalSum.value) + double.parse(totalTk.value))
                 .toString();
       }
-
     }
   }
 }

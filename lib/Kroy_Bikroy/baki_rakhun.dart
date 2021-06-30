@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/calculator_controller.dart';
-import 'package:jomakhoroch/View/home.dart';
 import 'package:jomakhoroch/View/home_page.dart';
 
 class BakiRakhun extends StatefulWidget {
@@ -16,9 +15,7 @@ class _BakiRakhunState extends State<BakiRakhun> {
       Get.put(CalculatorController());
 
   Widget buildText(double size, String text) {
-    return Text(
-      text,
-      style: TextStyle(fontSize: size),
+    return Text(text, style: TextStyle(fontSize: size),
     );
   }
 
@@ -38,7 +35,7 @@ class _BakiRakhunState extends State<BakiRakhun> {
               child: Text('নতুন বিক্রি শুরু করুন'),
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
-                primary: Colors.green,
+                primary: Colors.teal,
                 textStyle: TextStyle(fontSize: 20.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -51,7 +48,7 @@ class _BakiRakhunState extends State<BakiRakhun> {
           child: Column(
             children: [
               SizedBox(height: 70.0),
-              Icon(Icons.check_rounded, color: Colors.green, size: 50.0),
+              Icon(Icons.check_rounded, color: Colors.teal, size: 50.0),
               SizedBox(height: 40.0),
               buildText(26.0, 'বিক্রয় সম্পন্ন হয়েছে'),
               SizedBox(height: 10.0),

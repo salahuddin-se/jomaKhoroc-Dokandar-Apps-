@@ -27,7 +27,6 @@ class _ContactDetailsState extends State<ContactDetails> {
     await UrlLauncher.launch('mailto:+${widget.contact.email}');
   }
 
-
   Widget partOne() {
     return Container(
       width: double.infinity,
@@ -39,21 +38,33 @@ class _ContactDetailsState extends State<ContactDetails> {
           child: Column(
             children: [
               SizedBox(height: 10.0),
-              Container(
-                height: 140,
-                width: 140,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(70.0)),
-                  color: Colors.grey[100],
-                  border: Border.all(color: Colors.black, width: 5.0),
-                ),
-                child: (widget.contact.imageUrl.isEmpty ||
-                        widget.contact.imageUrl == '' ||
-                        widget.contact.imageUrl == 'null')
-                    ? Image.asset('images/contact.png')
-                    : Image.network(widget.contact.imageUrl,
-                        height: 120, width: 120, fit: BoxFit.contain),
-              ),
+              (widget.contact.imageUrl.isEmpty ||
+                      widget.contact.imageUrl == '' ||
+                      widget.contact.imageUrl == 'null')
+                  ? Container(
+                      height: 140,
+                      width: 140,
+                      decoration: new BoxDecoration(
+                        color: Colors.grey,
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                          image: new AssetImage('images/contact.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    )
+                  : Container(
+                      height: 140,
+                      width: 140,
+                      decoration: new BoxDecoration(
+                        color: Colors.grey,
+                        shape: BoxShape.circle,
+                        image: new DecorationImage(
+                          image: new NetworkImage(widget.contact.imageUrl),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
               SizedBox(height: 10.0),
               Text(widget.contact.name, style: TextStyle(fontSize: 20.0)),
               SizedBox(height: 5.0),
@@ -80,8 +91,8 @@ class _ContactDetailsState extends State<ContactDetails> {
                           padding: const EdgeInsets.all(15.0),
                           child: Column(
                             children: [
-                              Icon(Icons.call, color: Colors.green),
-                              Text('কল', style: TextStyle(color: Colors.green))
+                              Icon(Icons.call, color: Colors.teal),
+                              Text('কল', style: TextStyle(color: Colors.teal))
                             ],
                           ),
                         ),
@@ -101,9 +112,9 @@ class _ContactDetailsState extends State<ContactDetails> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Icon(Icons.message, color: Colors.green),
+                              Icon(Icons.message, color: Colors.teal),
                               Text('মেসেজ',
-                                  style: TextStyle(color: Colors.green))
+                                  style: TextStyle(color: Colors.teal))
                             ],
                           ),
                         ),
@@ -123,9 +134,9 @@ class _ContactDetailsState extends State<ContactDetails> {
                           padding: const EdgeInsets.all(12.0),
                           child: Column(
                             children: [
-                              Icon(Icons.mail, color: Colors.green),
+                              Icon(Icons.mail, color: Colors.teal),
                               Text('মেইল',
-                                  style: TextStyle(color: Colors.green))
+                                  style: TextStyle(color: Colors.teal))
                             ],
                           ),
                         ),
@@ -240,8 +251,7 @@ class _ContactDetailsState extends State<ContactDetails> {
               onPressed: () {
                 Get.to(EditContact(widget.contact));
               },
-              icon: Icon(Icons.edit, color: Colors.green)
-          ),
+              icon: Icon(Icons.edit, color: Colors.teal)),
           PopupMenuButton(
               offset: Offset(0, 40),
               onSelected: (value) {
@@ -261,8 +271,7 @@ class _ContactDetailsState extends State<ContactDetails> {
                     ),
                   )
                 ];
-              }
-              )
+              })
         ],
       ),
       body: SingleChildScrollView(

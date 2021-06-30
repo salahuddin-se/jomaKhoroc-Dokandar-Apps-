@@ -12,9 +12,7 @@ class BikrirKhata extends StatefulWidget {
 }
 
 class _BikrirKhataState extends State<BikrirKhata> {
-  final BakirKhataController bakirKhataController =
-      Get.put(BakirKhataController());
-
+  final BakirKhataController bakirKhataController = Get.put(BakirKhataController());
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -28,7 +26,7 @@ class _BikrirKhataState extends State<BikrirKhata> {
           backgroundColor: Colors.white,
           bottom: TabBar(
             labelColor: Colors.black,
-            indicatorColor: Colors.green,
+            indicatorColor: Colors.teal,
             tabs: [
               Tab(text: 'সেলস'),
               Tab(text: 'পরিশোধকৃত'),
@@ -38,7 +36,7 @@ class _BikrirKhataState extends State<BikrirKhata> {
         ),
         body: Obx(() => (bakirKhataController.isLoad.value)
             ? Center(
-                child: CircularProgressIndicator(color: Colors.green),
+                child: CircularProgressIndicator(color: Colors.teal),
               )
             : TabBarView(children: [
                 Sales(bakirKhataController.sList),

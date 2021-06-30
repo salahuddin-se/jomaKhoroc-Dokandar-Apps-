@@ -23,7 +23,7 @@ class _ProdListState extends State<ProdList> {
         if (productListController.isLoad.value == true) {
           return Center(
             child: CircularProgressIndicator(
-              color: Colors.green,
+              color: Colors.teal,
             ),
           );
         } else {

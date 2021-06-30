@@ -1,11 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/calculator_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/cash_contact_list.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/contact_list.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/digital_payment.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/nogod_grohon.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TkMethod extends StatefulWidget {
   const TkMethod({Key? key}) : super(key: key);
@@ -17,27 +14,18 @@ class _TkMethodState extends State<TkMethod> {
   final CalculatorController calculatorController =
       Get.put(CalculatorController());
 
-  void cashTap() async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    String sellerPhone = sharedPreferences.getString('Phone').toString();
+  void cashTap() {
+    Get.to(CashContactList(half: false));
+  }
 
-    await FirebaseFirestore.instance.collection('Sales').doc().set({
-      'Seller': sellerPhone,
-      'Amount': calculatorController.totalSum.toString(),
-      'Date': DateTime.now(),
-      'Type': 'Cash',
-      'Account': 'null',
-      'Product': calculatorController.prodName.value.toString(),
-    }).then((value) {
-      Get.to(NagadGrohon());
-    }).onError((error, stackTrace) {
-      Get.snackbar('Error', error.toString());
-    });
+  void halfTap() {
+    Get.to(CashContactList(half: true));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.black, //change your color here
@@ -51,28 +39,42 @@ class _TkMethodState extends State<TkMethod> {
           padding: const EdgeInsets.all(12.0),
           child: Column(
             children: [
-              Text('৳' + calculatorController.totalSum.toString(),
-                  style: TextStyle(fontSize: 35.0)),
-              Text('সর্বমোট'),
+              Text('সর্বমোট',style: TextStyle(fontSize: 22,color: Colors.black),),
+              Text('৳ ' + calculatorController.totalSum.toString(),
+                  style: TextStyle(fontSize: 30.0,color: Colors.red)),
+
               SizedBox(height: 20.0),
-              Align(alignment: Alignment.topLeft, child: Text('গৃহীত ক্যাশ')),
+              Align(
+                  alignment: Alignment.topLeft, child: Text('গৃহীত ক্যাশ',style: TextStyle(fontSize: 20,color: Colors.black))
+              ),
               Align(
                   alignment: Alignment.topLeft,
-                  child: Text(calculatorController.totalSum.toString())),
+                  child: Text(calculatorController.totalSum.toString(),style:TextStyle(fontSize: 23.0,color: Colors.red))
+              ),
+
               SizedBox(height: 10.0),
+
+
+
               ListView(
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 children: [
-                  ListTile(
-                    tileColor: Colors.grey[200],
-                    title: Text('নগদ গ্রহণ'),
-                    leading: Icon(Icons.money),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: cashTap,
+
+                  SizedBox(height: 15.0),
+
+                  Container(
+                    color: Colors.white,
+                    child: ListTile(
+                      tileColor: Colors.grey[200],
+                      title: Text('নগদ গ্রহণ',style: TextStyle(fontSize: 18,color: Colors.black),),
+                      leading: Icon(Icons.money,size: 30,),
+                      trailing: Icon(Icons.arrow_forward),
+                      onTap: cashTap,
+                    ),
                   ),
                   SizedBox(height: 15.0),
-                  ListTile(
+                  /*ListTile(
                     tileColor: Colors.grey[200],
                     title: Text('ডিজিটাল পেমেন্ট'),
                     leading: Icon(Icons.mobile_friendly),
@@ -81,34 +83,49 @@ class _TkMethodState extends State<TkMethod> {
                       Get.to(DigitalPayment());
                     },
                   ),
-                  SizedBox(height: 15.0),
-                  ListTile(
-                    tileColor: Colors.grey[200],
-                    title: Text('বাকি রাখুন'),
-                    leading: Icon(Icons.note),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {
-                      Get.to(ContactList(true, false));
-                    },
+                  SizedBox(height: 15.0),*/
+                  Container(
+                    color: Colors.white,
+                    child: ListTile(
+                      tileColor: Colors.grey[200],
+                      title: Text('বাকি রাখুন',style: TextStyle(fontSize: 18,color: Colors.black),),
+                      leading: Icon(Icons.note,size: 30,),
+                      trailing: Icon(Icons.arrow_forward),
+                      onTap: () {
+                        Get.to(ContactList(true, false));
+                      },
+                    ),
                   ),
                   SizedBox(height: 15.0),
-                  ListTile(
-                    tileColor: Colors.grey[200],
-                    title: Text('কিস্তি'),
-                    leading: Icon(Icons.calendar_today),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {
-                      //Get.to(Kisti());
-                    },
+
+                  Container(
+                    color: Colors.white,
+                    child: ListTile(
+                      tileColor: Colors.grey[200],
+                      title: Text('আংশিক পরিশোধ',style: TextStyle(fontSize: 18,color: Colors.black),),
+                      leading: Icon(Icons.monetization_on,size: 30,),
+                      trailing: Icon(Icons.arrow_forward),
+                      onTap: halfTap,
+                    ),
                   ),
                   SizedBox(height: 15.0),
-                  ListTile(
-                    tileColor: Colors.grey[200],
-                    title: Text('আপনার QR কোড সেট করুন'),
-                    leading: Icon(Icons.qr_code),
-                    trailing: Icon(Icons.arrow_forward),
-                    onTap: () {},
-                  ),
+                  // ListTile(
+                  //   tileColor: Colors.grey[200],
+                  //   title: Text('কিস্তি'),
+                  //   leading: Icon(Icons.calendar_today),
+                  //   trailing: Icon(Icons.arrow_forward),
+                  //   onTap: () {
+                  //     //Get.to(Kisti());
+                  //   },
+                  // ),
+                  // SizedBox(height: 15.0),
+                  // ListTile(
+                  //   tileColor: Colors.grey[200],
+                  //   title: Text('আপনার QR কোড সেট করুন'),
+                  //   leading: Icon(Icons.qr_code),
+                  //   trailing: Icon(Icons.arrow_forward),
+                  //   onTap: () {},
+                  // ),
                 ],
               ),
             ],

@@ -93,7 +93,8 @@ class _OnlineStoreState extends State<OnlineStore> {
                       children: [
                         Align(
                             alignment: Alignment.topLeft,
-                            child: Text('অনলাইন স্টোরের হিসাব',style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
+                            child: Text('অনলাইন স্টোরের হিসাব',style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
+                        ),
                         Row(
                           children: [
 
@@ -120,7 +121,8 @@ class _OnlineStoreState extends State<OnlineStore> {
                         Align(
                             alignment: Alignment.topLeft,
                             child: Text('বর্তমান অর্ডার',
-                                style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
+                                style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
+                        ),
 
                         Row(
                           children: [
@@ -150,10 +152,13 @@ class _OnlineStoreState extends State<OnlineStore> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
+
                           Align(
                               alignment: Alignment.topLeft,
                               child: Text('পণ্যের হিসাব',
-                                  style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))),
+                                  style: TextStyle(fontSize: 17.0,color:Colors.black,fontWeight: FontWeight.bold))
+                          ),
+
                           Row(
                             children: [
                               Expanded(
@@ -168,17 +173,19 @@ class _OnlineStoreState extends State<OnlineStore> {
                               ),
                             ],
                           ),
+
                         ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
-                buildButton(addBtn, 'নতুন পণ্য যোগ করুন', Icons.add_box,
-                    Icons.add_circle_outline
-                ),
+
                 SizedBox(height: 10.0),
 
+                buildButton(addBtn, 'নতুন পণ্য যোগ করুন', Icons.add_box,
+                    Icons.add_circle_outline),
+
+                SizedBox(height: 10.0),
 
               ],
             ),
@@ -189,5 +196,4 @@ class _OnlineStoreState extends State<OnlineStore> {
   }
 }
 /*
-
 */

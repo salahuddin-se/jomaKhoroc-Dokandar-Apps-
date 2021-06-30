@@ -66,34 +66,17 @@ class _BechaBikriState extends State<BechaBikri> {
                       value: 'add-prod',
                       child: Row(
                         children: [
-                          Icon(Icons.add_sharp, color: Colors.green),
+                          Icon(Icons.add_sharp, color: Colors.teal),
                           Text('নতুন পণ্য যোগ করুন'),
                         ],
                       ),
                     ),
-                    PopupMenuItem(
-                      value: 'stock',
-                      child: Row(
-                        children: [
-                          Icon(Icons.backpack, color: Colors.green),
-                          Text('স্টক তালিকা'),
-                        ],
-                      ),
-                    ),
-                    PopupMenuItem(
-                      value: 'add-customer',
-                      child: Row(
-                        children: [
-                          Icon(Icons.account_box, color: Colors.green),
-                          Text('নতুন কাস্টমার'),
-                        ],
-                      ),
-                    ),
+
                     PopupMenuItem(
                       value: 'customer',
                       child: Row(
                         children: [
-                          Icon(Icons.account_circle, color: Colors.green),
+                          Icon(Icons.account_circle, color: Colors.teal),
                           Text('কাস্টমার'),
                         ],
                       ),
@@ -102,19 +85,35 @@ class _BechaBikriState extends State<BechaBikri> {
                       value: 'bikri-khata',
                       child: Row(
                         children: [
-                          Icon(Icons.pages, color: Colors.green),
+                          Icon(Icons.pages, color: Colors.teal),
                           Text('বিক্রির খাতা'),
                         ],
                       ),
                     ),
 
+                    PopupMenuItem(
+                      value: 'stock',
+                      child: Row(
+                        children: [
+                          Icon(Icons.backpack, color: Colors.teal),
+                          Text('স্টক তালিকা'),
+                        ],
+                      ),
+                    ),
+                    PopupMenuItem(
+                      value: 'add-customer',
+                      child: Row(
+                        children: [
+                          Icon(Icons.account_box, color: Colors.teal),
+                          Text('নতুন কাস্টমার'),
+                        ],
+                      ),
+                    ),
 
                   ];
-                }
-                ),
+                }),
           ],
         ),
-
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           selectedItemColor: Colors.teal[700],
@@ -123,9 +122,14 @@ class _BechaBikriState extends State<BechaBikri> {
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.calculate,), label: 'শর্টকাট',
+              icon: Icon(
+                Icons.calculate,
+              ),
+              label: 'শর্টকাট',
             ),
-            BottomNavigationBarItem(icon: Icon(Icons.list,color: Colors.teal[700]), label: 'লিস্ট'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.list, color: Colors.teal[700]),
+                label: 'লিস্ট'),
           ],
           onTap: (int index) {
             setState(() {
@@ -133,27 +137,37 @@ class _BechaBikriState extends State<BechaBikri> {
             });
           },
         ),
-
         body: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(TkMethod());
-                  },
-                  child: Obx(() => Text('মোট ৳' +
-                      calculatorController.totalSum.value.toString(),style: TextStyle(fontWeight: FontWeight.bold,fontSize: 18),)),
-                  style: ElevatedButton.styleFrom(
-                    onPrimary: Colors.white,
-                    primary: Colors.teal[600],
-                    textStyle: TextStyle(fontSize: 20.0),
-                    minimumSize:
-                        Size(MediaQuery.of(context).size.width * 0.9, 60),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed: (calculatorController.totalSum.value
+                                    .toString() ==
+                                '0' ||
+                            calculatorController.totalSum.value.toString() ==
+                                '0.00')
+                        ? null
+                        : () {
+                            Get.to(TkMethod());
+                          },
+                    child: Text(
+                      'মোট ৳' + calculatorController.totalSum.value.toString(),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      onPrimary: Colors.white,
+                      primary: Colors.teal[600],
+                      textStyle: TextStyle(fontSize: 20.0),
+                      minimumSize:
+                          Size(MediaQuery.of(context).size.width * 0.9, 60),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
                     ),
                   ),
                 ),

@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/product_list_controller.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/stock_controller.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/becha_bikri.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/stock.dart';
+import 'package:jomakhoroch/View/online_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddProducts extends StatefulWidget {
@@ -61,19 +61,16 @@ class _AddProductsState extends State<AddProducts> {
 
     //image == null ||
     if (productController.text.trim() == '') {
-      Get.snackbar('Error', 'Please fill image and product name');
+      Get.snackbar('Error', 'Please fill product name');
     } else {
-      var snapshot = await FirebaseStorage.instance
-          .ref()
-          .child('Products/${productController.text.trim()}${DateTime.now()}')
-          .putFile(image);
-      snapshot.ref.getDownloadURL().then((value) async {
+      if (image == null) {
         await FirebaseFirestore.instance.collection('Products').doc().set({
           'Product': productController.text.trim(),
-          'imageUrl': value,
+          'imageUrl': 'null',
           'Catagory': catagoryChoose,
           'BuyPrice': buyController.text.trim(),
-          'SellPrice': sellController.text.trim(),
+          'SellPrice':
+              (sellController.text.isEmpty) ? '0' : sellController.text.trim(),
           'Discount': discountController.text.trim(),
           'Stock': stockController.text.trim(),
           'Online-Store': isTap.toString(),
@@ -82,16 +79,43 @@ class _AddProductsState extends State<AddProducts> {
         }).then((value) {
           Get.delete<ProductListController>();
           Get.delete<StockController>();
-          if (widget.type == 'Stock') {
+          Get.delete<OnlineStore>();
+          Get.off(Stock(true));
+        });
+      } else {
+        var snapshot = await FirebaseStorage.instance
+            .ref()
+            .child('Products/${productController.text.trim()}${DateTime.now()}')
+            .putFile(image);
+        snapshot.ref.getDownloadURL().then((value) async {
+          await FirebaseFirestore.instance.collection('Products').doc().set({
+            'Product': productController.text.trim(),
+            'imageUrl': value,
+            'Catagory': catagoryChoose,
+            'BuyPrice': buyController.text.trim(),
+            'SellPrice': (sellController.text.isEmpty)
+                ? '0'
+                : sellController.text.trim(),
+            'Discount': discountController.text.trim(),
+            'Stock': stockController.text.trim(),
+            'Online-Store': isTap.toString(),
+            'Description': discountController.text.trim(),
+            'Seller': sellerPhone,
+          }).then((value) {
+            Get.delete<ProductListController>();
+            Get.delete<StockController>();
+            Get.delete<OnlineStore>();
             Get.off(Stock(true));
-          } else {
-            Get.off(BechaBikri());
-          }
-        }
-        );
-      }).onError((error, stackTrace) {
-        Get.snackbar('Error', error.toString());
-      });
+            // if (widget.type == 'Stock') {
+            //   Get.off(Stock(true));
+            // } else {
+            //   Get.off(BechaBikri());
+            // }
+          });
+        }).onError((error, stackTrace) {
+          Get.snackbar('Error', error.toString());
+        });
+      }
     }
   }
 
@@ -116,8 +140,12 @@ class _AddProductsState extends State<AddProducts> {
       decoration: InputDecoration(
         labelText: label,
         labelStyle: TextStyle(fontSize: 16.0),
-        focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0)),
+        focusedBorder:
+
+        UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.teal, width: 2.0)
+        ),
+
       ),
     );
   }
@@ -129,14 +157,13 @@ class _AddProductsState extends State<AddProducts> {
         height: 60.0,
         child: Padding(
           padding: const EdgeInsets.only(
-              top: 8.0, bottom: 8.0, left: 20.0, right: 20.0
-          ),
+              top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
           child: ElevatedButton(
             onPressed: btnTap,
             child: Text('এগিয়ে যান'),
             style: ElevatedButton.styleFrom(
               onPrimary: Colors.white,
-              primary: Colors.green,
+              primary: Colors.teal,
               textStyle: TextStyle(fontSize: 20.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
@@ -158,14 +185,13 @@ class _AddProductsState extends State<AddProducts> {
               onPressed: btnTap,
               child: Text('সেভ করুন'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  primary: Colors.teal,
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   )),
             ),
           ),
-
         ],
       ),
       body: SingleChildScrollView(
@@ -175,10 +201,7 @@ class _AddProductsState extends State<AddProducts> {
             children: [
               Align(
                   alignment: Alignment.topLeft,
-                  child: Text('পণ্যের ছবি যোগ করুন')
-              ),
-
-
+                  child: Text('পণ্যের ছবি যোগ করুন')),
               Align(
                 alignment: Alignment.topLeft,
                 child: Row(
@@ -186,20 +209,18 @@ class _AddProductsState extends State<AddProducts> {
                     IconButton(
                         onPressed: cameraTap,
                         icon: Icon(Icons.camera_alt_rounded,
-                            color: Colors.green, size: 45.0)
-                    ),
+                            color: Colors.teal, size: 45.0)),
                     (image == null)
                         ? Text('')
                         : Image.file(image, height: 100, width: 100),
                   ],
                 ),
               ),
-
               SizedBox(height: 40.0),
               Card(
                 child: DropdownButton(
                   hint: Text(hintText),
-                  icon: Icon(Icons.arrow_forward, color: Colors.green),
+                  icon: Icon(Icons.arrow_forward, color: Colors.teal),
                   iconSize: 25.0,
                   isExpanded: true,
                   onChanged: (value) {
@@ -245,11 +266,11 @@ class _AddProductsState extends State<AddProducts> {
                   padding: const EdgeInsets.all(10.0),
                   child: Row(
                     children: [
-                      Expanded(child: Text('অনলাইন স্টোরে পাবলিশ')),
+                      Expanded(child: Text('অনলাইন স্টোরে ছাড়ুন')),
                       Switch(
                         onChanged: switchTap,
                         value: isTap,
-                        activeColor: Colors.green,
+                        activeColor: Colors.teal,
                         activeTrackColor: Colors.grey[350],
                         inactiveThumbColor: Colors.grey[200],
                         inactiveTrackColor: Colors.grey[350],
@@ -258,28 +279,31 @@ class _AddProductsState extends State<AddProducts> {
                   ),
                 ),
               ),
+
+              SizedBox(
+                height: 10.0,
+              ),
+
               Card(
                 child: Container(
-                  color: Colors.yellow,
+                  color: Colors.teal,
                   child: Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: Row(
                       children: [
                         Icon(Icons.query_stats),
-                        SizedBox(width: 5.0),
+                        SizedBox(width: 10.0),
                         Expanded(
                           child: Text(
-                              'অনলাইন স্টোরে পাবলিশ করে আপনার ব্যবসা বৃদ্ধি করুন',
-                              style: TextStyle(color: Colors.brown)),
+                              'অনলাইন স্টোরে পণ্য পাবলিশ করে আপনার ব্যবসার পরিধি বৃদ্ধি করুন ',
+                              style: TextStyle(color: Colors.white,fontSize: 16.0)),
                         ),
                       ],
                     ),
                   ),
                 ),
               ),
-
               SizedBox(height: 40.0),
-
               buildTextFeild(desController, 'পণ্যের বর্ণনা'),
             ],
           ),

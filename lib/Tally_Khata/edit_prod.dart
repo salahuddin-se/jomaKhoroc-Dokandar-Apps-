@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/product_list_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/stock_controller.dart';
 import 'package:jomakhoroch/Tally_Khata/product.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/stock.dart';
 
@@ -54,7 +55,7 @@ class _EditProdState extends State<EditProd> {
         labelText: label,
         labelStyle: TextStyle(fontSize: 16.0),
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0)),
+            borderSide: BorderSide(color: Colors.teal, width: 2.0)),
       ),
     );
   }
@@ -99,6 +100,7 @@ class _EditProdState extends State<EditProd> {
       'Description': discountController.text.trim(),
     }).then((value) {
       Get.delete<ProductListController>();
+      Get.delete<StockController>();
       Get.off((Stock(true)));
     }).onError((error, stackTrace) {
       Get.snackbar('Error', error.toString());
@@ -118,7 +120,7 @@ class _EditProdState extends State<EditProd> {
             child: Text('এগিয়ে যান'),
             style: ElevatedButton.styleFrom(
               onPrimary: Colors.white,
-              primary: Colors.green,
+              primary: Colors.teal,
               textStyle: TextStyle(fontSize: 20.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
@@ -140,7 +142,7 @@ class _EditProdState extends State<EditProd> {
               onPressed: btnTap,
               child: Text('সেভ করুন'),
               style: ElevatedButton.styleFrom(
-                  primary: Colors.green,
+                  primary: Colors.teal,
                   onPrimary: Colors.white,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
@@ -158,7 +160,7 @@ class _EditProdState extends State<EditProd> {
               Card(
                 child: DropdownButton(
                   hint: Text(hintText),
-                  icon: Icon(Icons.arrow_forward, color: Colors.green),
+                  icon: Icon(Icons.arrow_forward, color: Colors.teal),
                   iconSize: 25.0,
                   isExpanded: true,
                   onChanged: (value) {
@@ -208,7 +210,7 @@ class _EditProdState extends State<EditProd> {
                       Switch(
                         onChanged: switchTap,
                         value: isTap,
-                        activeColor: Colors.green,
+                        activeColor: Colors.teal,
                         activeTrackColor: Colors.grey[350],
                         inactiveThumbColor: Colors.grey[200],
                         inactiveTrackColor: Colors.grey[350],

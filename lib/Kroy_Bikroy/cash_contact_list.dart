@@ -1,22 +1,22 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/calculator_controller.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/contact_list_controller.dart';
 import 'package:jomakhoroch/Contact_List/contact.dart';
 import 'package:jomakhoroch/Kroy_Bikroy/add_contact.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/baki_rakhun.dart';
-import 'package:jomakhoroch/Kroy_Bikroy/contact_details.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/calculator_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/contact_list_controller.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/half_payment.dart';
+import 'package:jomakhoroch/Kroy_Bikroy/nogod_grohon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ContactList extends StatefulWidget {
-  final bool bakiache, details;
-  const ContactList(this.bakiache, this.details);
+class CashContactList extends StatefulWidget {
+  final bool half;
+  const CashContactList({required this.half});
   @override
-  _ContactListState createState() => _ContactListState();
+  _CashContactListState createState() => _CashContactListState();
 }
 
-class _ContactListState extends State<ContactList> {
+class _CashContactListState extends State<CashContactList> {
   final ContactListController contactListController =
       Get.put(ContactListController());
   final CalculatorController calculatorController =
@@ -26,26 +26,46 @@ class _ContactListState extends State<ContactList> {
   String searchText = '';
   TextEditingController searchController = TextEditingController();
 
-  tileTap(String phone, Contact contact) async {
-    if (widget.details == true) {
-      Get.to(ContactDetails(contact));
-    } else if (widget.bakiache == true) {
-      SharedPreferences sharedPreferences =
-          await SharedPreferences.getInstance();
-      String sellerPhone = sharedPreferences.getString('Phone').toString();
+  void tileTap(String phone, Contact contact) async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String sellerPhone = sharedPreferences.getString('Phone').toString();
+    if (widget.half) {
+      Get.to(HalfPayment(
+          phone: phone,
+          seller: sellerPhone,
+          totalAmount: calculatorController.totalSum.toString(),
+          product: calculatorController.prodName.value.toString()));
+    } else {
       await FirebaseFirestore.instance.collection('Sales').doc().set({
         'Seller': sellerPhone,
         'Amount': calculatorController.totalSum.toString(),
         'Date': DateTime.now(),
-        'Type': 'Debt',
+        'Type': 'Cash',
         'Account': phone,
         'Product': calculatorController.prodName.value.toString(),
       }).then((value) {
-        Get.to(BakiRakhun());
+        Get.off(NagadGrohon());
+      }).onError((error, stackTrace) {
+        Get.snackbar('Error', error.toString());
       });
-    } else {
-      // ********** //
     }
+  }
+
+  void anoymousTap() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    String sellerPhone = sharedPreferences.getString('Phone').toString();
+    await FirebaseFirestore.instance.collection('Sales').doc().set({
+      'Seller': sellerPhone,
+      'Amount': calculatorController.totalSum.toString(),
+      'Date': DateTime.now(),
+      'Type': 'Cash',
+      'Account': 'null',
+      'Product': calculatorController.prodName.value.toString(),
+    }).then((value) {
+      Get.off(NagadGrohon());
+    }).onError((error, stackTrace) {
+      Get.snackbar('Error', error.toString());
+    });
   }
 
   @override
@@ -60,11 +80,7 @@ class _ContactListState extends State<ContactList> {
         backgroundColor: Colors.teal,
         foregroundColor: Colors.white,
         onPressed: () {
-          if (widget.bakiache == true) {
-            Get.to(AddContact('Baki'));
-          } else {
-            Get.to(AddContact('none'));
-          }
+          Get.to(AddContact('none'));
         },
       ),
       appBar: AppBar(
@@ -86,6 +102,12 @@ class _ContactListState extends State<ContactList> {
             : Text('কন্টাক্ট লিস্ট', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         actions: [
+          (widget.half == false)
+              ? IconButton(
+                  onPressed: anoymousTap,
+                  icon: Icon(Icons.device_unknown),
+                )
+              : Container(),
           (isSearch)
               ? IconButton(
                   onPressed: () {
@@ -119,6 +141,7 @@ class _ContactListState extends State<ContactList> {
             );
           } else {
             return ListView.builder(
+              //physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: contactListController.contactList.length,
               itemBuilder: (BuildContext context, int index) {

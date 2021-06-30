@@ -14,12 +14,6 @@ import 'package:pdf/widgets.dart';
 import 'package:flutter/src/widgets/basic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class User {
-  final String name;
-  final int age;
-  const User({required this.name, required this.age});
-}
-
 class PdfApi {
   static Future<File> generateFile(
       List<Baki> list, String totalBaki, String totalJoma) async {
@@ -120,7 +114,7 @@ class PdfApi {
                           ),
                           pw.Expanded(
                             flex: 2,
-                            child: pw.Text('0',
+                            child: pw.Text(list[index].deposit,
                                 style: pw.TextStyle(
                                     color: PdfColor.fromHex('#00FF00'))),
                           ),

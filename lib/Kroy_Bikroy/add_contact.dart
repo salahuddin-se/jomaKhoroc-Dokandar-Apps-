@@ -17,7 +17,6 @@ class AddContact extends StatefulWidget {
 }
 
 class _AddContactState extends State<AddContact> {
-
   TextEditingController phoneController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -27,12 +26,6 @@ class _AddContactState extends State<AddContact> {
   bool more = false;
   var image;
   String onlineGroupValue = 'Customer';
-
-  @override
-  void initState() {
-    print(widget.type.toString() + ' !!!!!!');
-    super.initState();
-  }
 
   void btnTap() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
@@ -59,15 +52,15 @@ class _AddContactState extends State<AddContact> {
             Get.off(ContactList(false, true));
           }
         });
-      }
-
-      else {
+      } else {
+        print('ekhane asche !!!!!!!!!!!!');
         var snapshot = await FirebaseStorage.instance
             .ref()
             .child(
                 'Profile/+88${phoneController.text.trim()}${nameController.text.trim()}${DateTime.now()}')
             .putFile(image);
         snapshot.ref.getDownloadURL().then((value) async {
+          print(value);
           await FirebaseFirestore.instance.collection('Contacts').doc().set({
             'Phone': '+88' + phoneController.text.trim(),
             'Name': nameController.text.trim(),
@@ -76,20 +69,20 @@ class _AddContactState extends State<AddContact> {
             'Address': addController.text.trim(),
             'Note': noteController.text.trim(),
             'Type': onlineGroupValue,
+            'Seller': sellerPhone,
           }).then((value) {
             Get.delete<ContactListController>();
             Get.delete<BakiController>();
             if (widget.type == 'Baki') {
               Get.off(ContactList(true, false));
             } else {
-              Get.off(ContactList(false, false));
+              Get.off(ContactList(false, true));
             }
           });
         }).onError((error, stackTrace) {
           Get.snackbar('Error', error.toString());
         });
       }
-
     }
   }
 
@@ -122,12 +115,11 @@ class _AddContactState extends State<AddContact> {
       keyboardType: (icon) ? TextInputType.number : TextInputType.text,
       decoration: InputDecoration(
         suffixIcon:
-            (icon) ? Icon(Icons.contact_page, color: Colors.green) : null,
+            (icon) ? Icon(Icons.contact_page, color: Colors.teal) : null,
         labelText: label,
         labelStyle: TextStyle(fontSize: 16.0),
         focusedBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.green, width: 2.0)
-        ),
+            borderSide: BorderSide(color: Colors.teal, width: 2.0)),
       ),
     );
   }
@@ -145,7 +137,7 @@ class _AddContactState extends State<AddContact> {
             child: Text('সেভ করুন'),
             style: ElevatedButton.styleFrom(
               onPrimary: Colors.white,
-              primary: Colors.green,
+              primary: Colors.teal,
               textStyle: TextStyle(fontSize: 20.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
@@ -185,7 +177,7 @@ class _AddContactState extends State<AddContact> {
                             children: [
                               Radio(
                                 value: 'Customer',
-                                activeColor: Colors.green,
+                                activeColor: Colors.teal,
                                 groupValue: onlineGroupValue,
                                 onChanged: (val) {
                                   setState(() {
@@ -197,7 +189,7 @@ class _AddContactState extends State<AddContact> {
                               SizedBox(width: 8.0),
                               Radio(
                                 value: 'Supplier',
-                                activeColor: Colors.green,
+                                activeColor: Colors.teal,
                                 groupValue: onlineGroupValue,
                                 onChanged: (val) {
                                   setState(() {
@@ -211,28 +203,26 @@ class _AddContactState extends State<AddContact> {
                         ],
                       )),
                   TextButton.icon(
-                    icon: Icon(Icons.arrow_downward, color: Colors.green),
+                    icon: Icon(Icons.arrow_downward, color: Colors.teal),
                     onPressed: moreTap,
                     label:
-                        Text('আরো তথ্য', style: TextStyle(color: Colors.green)),
+                        Text('আরো তথ্য', style: TextStyle(color: Colors.teal)),
                   ),
                   (more)
-                      ?
-                  Column(
+                      ? Column(
                           children: [
                             (image == null)
                                 ? IconButton(
                                     onPressed: cameraTap,
                                     icon: Icon(Icons.camera_alt_rounded,
-                                        color: Colors.green, size: 40.0))
+                                        color: Colors.teal, size: 40.0))
                                 : Image.file(image, height: 100, width: 100),
                             buildTextFeild(emailController, 'ইমেইল', false),
                             buildTextFeild(addController, 'ঠিকানা', false),
                             buildTextFeild(noteController, 'নোট', false),
                             SizedBox(height: 20.0),
                           ],
-                  )
-
+                        )
                       : Text(''),
                 ],
               ),

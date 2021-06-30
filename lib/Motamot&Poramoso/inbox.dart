@@ -33,4 +33,3 @@ class _InBoxState extends State<InBox> {
     );
   }
 }
-

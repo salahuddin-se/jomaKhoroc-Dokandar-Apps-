@@ -37,7 +37,7 @@ class _NagadGrohonState extends State<NagadGrohon> {
               child: Text('নতুন বিক্রি শুরু করুন'),
               style: ElevatedButton.styleFrom(
                 onPrimary: Colors.white,
-                primary: Colors.green,
+                primary: Colors.teal,
                 textStyle: TextStyle(fontSize: 20.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
@@ -50,7 +50,7 @@ class _NagadGrohonState extends State<NagadGrohon> {
           child: Column(
             children: [
               SizedBox(height: 70.0),
-              Icon(Icons.check_rounded, color: Colors.green, size: 50.0),
+              Icon(Icons.check_rounded, color: Colors.teal, size: 50.0),
               SizedBox(height: 40.0),
               buildText(26.0, 'বিক্রয় সম্পন্ন হয়েছে'),
               SizedBox(height: 10.0),

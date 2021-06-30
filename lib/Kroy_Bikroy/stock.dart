@@ -26,7 +26,7 @@ class _StockState extends State<Stock> {
           backgroundColor: Colors.white,
           bottom: TabBar(
             labelColor: Colors.black,
-            indicatorColor: Colors.green,
+            indicatorColor: Colors.teal,
             tabs: [
               Tab(text: 'স্টক লিস্ট'),
               Tab(text: 'ক্যাটাগরি লিস্ট'),
@@ -36,7 +36,7 @@ class _StockState extends State<Stock> {
 
         body: Obx(
           () => (stockController.isLoad.value)
-              ? Center(child: CircularProgressIndicator(color: Colors.green))
+              ? Center(child: CircularProgressIndicator(color: Colors.teal))
               : TabBarView(
                   children: [
 

@@ -4,7 +4,6 @@ import 'package:jomakhoroch/Tally_Khata/catagory.dart';
 class CatagoryList extends StatefulWidget {
   final List<Catagory> cList;
   CatagoryList(this.cList);
-
   @override
   _CatagoryListState createState() => _CatagoryListState();
 }
