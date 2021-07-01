@@ -42,9 +42,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               Align(
                   alignment: Alignment.center,
                   child: Text(
-                    "আপনার বিজনেস অ্যাপ",
+                    "আপনার ব্যবসার স্মার্ট সমাধান।",
                     style: TextStyle(color: Colors.black, fontSize: 20.0),
-                  )),
+                  )
+              ),
               SizedBox(
                 height: 20.0,
               ),
@@ -53,7 +54,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Align(
                     alignment: Alignment.center,
                     child: Text(
-                      "১০,০০,০০০+ ব্যবসায় প্রতিষ্ঠানের ডিজিটাল মাধ্যমে এগিয়ে যাওয়ার পথে আপনাকে স্বাগতম।",
+                      "আপনার ব্যবসা প্রতিষ্ঠানের উন্নতি সাধনে আমরা প্রতিজ্ঞাবদ্ধ।",
                       style: TextStyle(color: Colors.black, fontSize: 24.0),
                       textAlign: TextAlign.center,
                     )),
@@ -72,7 +73,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.green,
+                        color: Colors.teal,
                         //spreadRadius: 4,
                         //blurRadius: 10,
                         //offset: Offset(0, 3),
@@ -99,7 +100,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               ),
 
               SizedBox(
-                height: 15.0,
+                height: 20.0,
               ),
 
               Container(
@@ -110,7 +111,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Radius.circular(25.0),
                     ),
                     border: Border.all(
-                      color: Colors.green,
+                      color: Colors.teal,
                       width: 3,
                     ),
                     boxShadow: [
@@ -127,14 +128,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       Get.to(Register());
                     },
                     child: Text(
-                      'ফ্রি রেজিস্ট্রেশন করুন',
+                      'ফ্রিতে রেজিস্ট্রেশন করুন',
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontFamily: "Netflix",
                         fontWeight: FontWeight.w600,
                         fontSize: 18,
                         letterSpacing: 0.0,
-                        color: Colors.green,
+                        color: Colors.teal,
                       ),
                     ),
                   ),

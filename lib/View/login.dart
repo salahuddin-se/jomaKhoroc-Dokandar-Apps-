@@ -69,10 +69,10 @@ class _LoginState extends State<Login> {
               top: 8.0, bottom: 8.0, left: 20.0, right: 20.0),
           child: ElevatedButton(
             onPressed: loginTap,
-            child: Text('লগইন করুন'),
+            child: Text('লগইন'),
             style: ElevatedButton.styleFrom(
               onPrimary: Colors.white,
-              primary: Colors.green,
+              primary: Colors.teal,
               textStyle: TextStyle(fontSize: 20.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
@@ -101,11 +101,11 @@ class _LoginState extends State<Login> {
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: 'মোবাইল নম্বর*',
-                          labelStyle: TextStyle(color: Colors.green),
-                          prefixIcon: Icon(Icons.call, color: Colors.green),
+                          labelStyle: TextStyle(color: Colors.teal),
+                          prefixIcon: Icon(Icons.call, color: Colors.teal),
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.green, width: 2.0)),
+                                  BorderSide(color: Colors.teal, width: 2.0)),
                         ),
                       ),
                       SizedBox(height: 10.0),
@@ -113,30 +113,30 @@ class _LoginState extends State<Login> {
                         controller: pinController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          labelText: 'পিন কোড*',
-                          labelStyle: TextStyle(color: Colors.green),
-                          prefixIcon: Icon(Icons.lock, color: Colors.green),
+                          labelText: 'পিন কোড *',
+                          labelStyle: TextStyle(color: Colors.teal),
+                          prefixIcon: Icon(Icons.lock, color: Colors.teal),
                           focusedBorder: UnderlineInputBorder(
                               borderSide:
-                                  BorderSide(color: Colors.green, width: 2.0)),
+                                  BorderSide(color: Colors.teal, width: 2.0)),
                         ),
                       ),
                       SizedBox(height: 25.0),
                       Align(
                           alignment: Alignment.topLeft,
-                          child: Text('পিন কোড ভুলে গিয়েছেন?',
+                          child: Text('আপনি কি পিন কোড ভুলে গিয়েছেন?',
                               style: TextStyle(fontSize: 14.0))),
                       GestureDetector(
                         onTap: () {},
                         child: Row(
                           children: [
-                            Text('নতুন পিন কোড সেট করুন',
+                            Text('পিন কোড সেট করুন',
                                 style: TextStyle(
-                                    color: Colors.green,
+                                    color: Colors.teal,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 14.0)),
                             SizedBox(width: 8.0),
-                            Icon(Icons.arrow_forward, color: Colors.green),
+                            Icon(Icons.arrow_forward, color: Colors.teal),
                           ],
                         ),
                       ),
@@ -156,7 +156,7 @@ class _LoginState extends State<Login> {
                           Text('নিয়ম ও শর্তসমূহে ',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.green)),
+                                  color: Colors.teal)),
                           Text('রাজি আছেন'),
                         ],
                       ),
@@ -169,10 +169,10 @@ class _LoginState extends State<Login> {
                       child: Row(
                         children: [
                           Text('একাউন্ট নেই? '),
-                          Text('ফ্রি রেজিস্ট্রেশন করুন',
+                          Text('ফ্রিতে রেজিস্ট্রেশন করুন',
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.green)),
+                                  color: Colors.teal)),
                         ],
                       ),
                     ),

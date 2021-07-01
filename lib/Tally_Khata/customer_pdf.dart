@@ -1,18 +1,14 @@
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:jomakhoroch/Tally_Khata/Baki.dart';
+import 'package:flutter/widgets.dart';
 import 'package:jomakhoroch/Tally_Khata/baki_info.dart';
 import 'package:open_file/open_file.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:pdf/widgets.dart';
-
-import 'package:flutter/src/widgets/basic.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomerPdf {

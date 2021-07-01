@@ -53,6 +53,7 @@ class _RegisterState extends State<Register> {
         setState(() {
           isLoad = false;
         });
+
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
@@ -77,7 +78,7 @@ class _RegisterState extends State<Register> {
                   },
                   child: Text("Verify"),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green,
+                    primary: Colors.teal,
                     onPrimary: Colors.white,
                   ),
                 ),
@@ -85,6 +86,7 @@ class _RegisterState extends State<Register> {
             ),
           ),
         );
+
       },
       codeAutoRetrievalTimeout: (String verificationId) {},
     );
@@ -114,7 +116,7 @@ class _RegisterState extends State<Register> {
             child: Text('রেজিস্টার করুন'),
             style: ElevatedButton.styleFrom(
               onPrimary: Colors.white,
-              primary: Colors.green,
+              primary: Colors.teal,
               textStyle: TextStyle(fontSize: 20.0),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0),
@@ -124,7 +126,7 @@ class _RegisterState extends State<Register> {
         ),
       ),
       body: (isLoad)
-          ? Center(child: CircularProgressIndicator(color: Colors.green))
+          ? Center(child: CircularProgressIndicator(color: Colors.teal))
           : SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -135,29 +137,34 @@ class _RegisterState extends State<Register> {
                       maxLength: 11,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        labelText: 'মোবাইল নম্বর*',
-                        labelStyle: TextStyle(color: Colors.green),
-                        prefixIcon: Icon(Icons.call, color: Colors.green),
+                        labelText: 'মোবাইল নম্বর দিন *',
+                        labelStyle: TextStyle(color: Colors.teal),
+                        prefixIcon: Icon(Icons.call, color: Colors.teal),
                         focusedBorder: UnderlineInputBorder(
                             borderSide:
-                                BorderSide(color: Colors.green, width: 2.0)),
+                                BorderSide(color: Colors.teal, width: 2.0)),
                       ),
                     ),
+
                     SizedBox(height: 20.0),
+
                     Align(
                         alignment: Alignment.topLeft,
-                        child: Text('একাউন্ট আছে?')),
+                        child: Text('একাউন্ট আছে?')
+                    ),
+
                     Align(
                       alignment: Alignment.topLeft,
                       child: GestureDetector(
                         onTap: loginTap,
                         child: Text('লগইন করুন',
                             style: TextStyle(
-                                color: Colors.green,
+                                color: Colors.teal,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.0)),
                       ),
                     ),
+
                   ],
                 ),
               ),
