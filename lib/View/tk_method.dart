@@ -108,7 +108,7 @@ class _TkMethodState extends State<TkMethod> {
                       onTap: halfTap,
                     ),
                   ),
-                  SizedBox(height: 15.0),
+                  SizedBox(height: 20.0),
                   // ListTile(
                   //   tileColor: Colors.grey[200],
                   //   title: Text('কিস্তি'),
